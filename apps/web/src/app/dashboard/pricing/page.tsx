@@ -6,7 +6,7 @@ import { useAuthStore } from "@/stores/authStore";
 import { useI18n } from "@/hooks/useI18n";
 import Button from "@/components/ui/Button";
 import { Check, Crown, Users, Zap, ArrowLeft } from "lucide-react";
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 interface PayPalConfig {
   clientId: string;
@@ -20,7 +20,6 @@ export default function PricingPage() {
   const { t } = useI18n();
   const [paypalConfig, setPaypalConfig] = useState<PayPalConfig | null>(null);
   const [processing, setProcessing] = useState(false);
-  const [{ options }, dispatch] = usePayPalScriptReducer();
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/paypal/config`)
@@ -28,51 +27,6 @@ export default function PricingPage() {
       .then(setPaypalConfig)
       .catch(() => {});
   }, []);
-
-  const handleSubscriptionCreate = async (planId: string, tier: string) => {
-    return async (data: any, actions: any) => {
-      setProcessing(true);
-      try {
-        return await actions.subscription.create({
-          plan_id: planId,
-        });
-      } catch (err) {
-        setProcessing(false);
-        return null;
-      }
-    };
-  };
-
-  const handleSubscriptionApprove = async (tier: string) => {
-    return async (data: any, actions: any) => {
-      try {
-        const token = localStorage.getItem("jetlingo-token");
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/subscriptions/verify`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ subscriptionId: data.subscriptionID }),
-        });
-
-        if (res.ok) {
-          const result = await res.json();
-          const stored = localStorage.getItem("user");
-          if (stored) {
-            const u = JSON.parse(stored);
-            u.subscriptionTier = result.tier;
-            localStorage.setItem("user", JSON.stringify(u));
-          }
-          router.push("/dashboard");
-        }
-      } catch (err) {
-        console.error("Subscription verification failed:", err);
-      } finally {
-        setProcessing(false);
-      }
-    };
-  };
 
   const plans = [
     {
@@ -112,6 +66,42 @@ export default function PricingPage() {
     },
   ];
 
+  const createSubscription = (_data: any, actions: any) => {
+    const premiumPlanId = paypalConfig?.plans?.premium;
+    if (!premiumPlanId) return Promise.reject(new Error("No plan configured"));
+    setProcessing(true);
+    return actions.subscription.create({ plan_id: premiumPlanId });
+  };
+
+  const onApprove = async (data: any) => {
+    try {
+      const token = localStorage.getItem("jetlingo-token");
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/subscriptions/verify`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ subscriptionId: data.subscriptionID }),
+      });
+
+      if (res.ok) {
+        const result = await res.json();
+        const stored = localStorage.getItem("user");
+        if (stored) {
+          const u = JSON.parse(stored);
+          u.subscriptionTier = result.tier;
+          localStorage.setItem("user", JSON.stringify(u));
+        }
+        router.push("/dashboard");
+      }
+    } catch (err) {
+      console.error("Subscription verification failed:", err);
+    } finally {
+      setProcessing(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-navy-950 p-4 md:p-8">
       <div className="max-w-5xl mx-auto">
@@ -120,7 +110,7 @@ export default function PricingPage() {
           className="flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors"
         >
           <ArrowLeft size={16} />
-          {t.nav?.features || "Back"}
+          Back
         </button>
 
         <div className="text-center mb-12">
@@ -184,8 +174,8 @@ export default function PricingPage() {
                       shape: "rect",
                       label: "subscribe",
                     }}
-                    createSubscription={handleSubscriptionCreate(plan.planId, plan.tier)}
-                    onApprove={handleSubscriptionApprove(plan.tier)}
+                    createSubscription={createSubscription}
+                    onApprove={onApprove}
                     onError={() => setProcessing(false)}
                   />
                 </div>
