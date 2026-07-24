@@ -28,7 +28,7 @@ function TutorAvatar({ tutor, size = "sm", emotion = "idle" }: { tutor: Tutor; s
   };
   return (
     <div className={`${sizeClasses} rounded-full bg-gradient-to-br ${bgMap[tutor.color] || "from-teal-500 to-teal-600"} flex items-center justify-center shadow-lg`}>
-      {tutor.emoji}
+      {tutor.avatar}
     </div>
   );
 }

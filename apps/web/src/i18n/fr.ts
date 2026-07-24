@@ -278,6 +278,9 @@ const fr = {
       "mateo-juegos": "Ton créateur de défis — joueur, espiègle, transforme l'apprentissage en jeu",
       "carmen-business": "Ton experte espagnol des affaires — professionnelle, directe, orientée résultats",
     },
+    noLessons: "Aucune leçon disponible pour cette langue.",
+    continueLesson: "Continuer",
+    startLesson: "Commencer la leçon",
   },
 
   // ── Practice ──

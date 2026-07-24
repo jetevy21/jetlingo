@@ -277,6 +277,9 @@ const en = {
       "mateo-juegos": "Your challenge creator — playful, mischievous, turns learning into a game",
       "carmen-business": "Your business Spanish expert — professional, direct, results-oriented",
     },
+    noLessons: "No lessons available for this language.",
+    continueLesson: "Continue",
+    startLesson: "Start Lesson",
   },
 
   // ── Practice ──

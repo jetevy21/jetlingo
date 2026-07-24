@@ -347,6 +347,7 @@ export const lessonsData: Record<string, LessonData> = {
     cefrLevel: "A1",
     estimatedMinutes: 10,
     tutorId: "sofia-pronunciacion",
+    language: "es",
     steps: [
       {
         type: "intro",
@@ -420,6 +421,7 @@ export const lessonsData: Record<string, LessonData> = {
     cefrLevel: "A2",
     estimatedMinutes: 15,
     tutorId: "diego-vocabulario",
+    language: "es",
     steps: [
       {
         type: "intro",
@@ -697,7 +699,7 @@ export const lessonsData: Record<string, LessonData> = {
           { word: "I don't work", translation: "Je ne travaille pas", pronunciation: "eye dont wuhk", example: "I don't work on Sundays.", exampleTranslation: "Je ne travaille pas le dimanche." },
           { word: "He doesn't work", translation: "Il ne travaille pas", pronunciation: "hee duh-znt wuhk", example: "He doesn't speak French.", exampleTranslation: "Il ne parle pas français." },
           { word: "Do you work?", translation: "Travailles-tu ?", pronunciation: "do yoo wuhk", example: "Do you work here?", exampleTranslation: "Travailles-tu ici ?" },
-          { word: "Does he work?", options: ["Travaille-t-il ?"], pronunciation: "duh-z hee wuhk", example: "Does he work on Mondays?", exampleTranslation: "Travaille-t-il le lundi ?" },
+          { word: "Does he work?", translation: "Travaille-t-il ?", pronunciation: "duh-z hee wuhk", example: "Does he work on Mondays?", exampleTranslation: "Travaille-t-il le lundi ?" },
         ],
       },
       {
