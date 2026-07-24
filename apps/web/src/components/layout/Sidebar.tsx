@@ -11,13 +11,14 @@ import {
   Settings,
   LogOut,
   Zap,
+  Building2,
 } from "lucide-react";
 import { useAuthStore } from "@/stores/authStore";
 import { useI18n } from "@/hooks/useI18n";
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const { logout } = useAuthStore();
+  const { logout, user } = useAuthStore();
   const { t } = useI18n();
 
   const navItems = [
@@ -27,6 +28,9 @@ export default function Sidebar() {
     { href: "/dashboard/dictionary", label: t.sidebar.dictionary, icon: Zap },
     { href: "/dashboard/stats", label: t.sidebar.statistics, icon: BarChart3 },
     { href: "/dashboard/settings", label: t.sidebar.settings, icon: Settings },
+    ...(user?.subscriptionTier === "enterprise"
+      ? [{ href: "/dashboard/enterprise", label: t.enterprise?.sidebar || "Enterprise", icon: Building2 }]
+      : []),
   ];
 
   return (

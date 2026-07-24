@@ -124,6 +124,36 @@ const fr = {
     ],
   },
 
+  // ── Enterprise ──
+  enterprise: {
+    title: "Tableau de bord Entreprise",
+    subtitle: "Gérez les progrès d'apprentissage de votre équipe",
+    sidebar: "Entreprise",
+    inviteMember: "Inviter un membre",
+    totalMembers: "Total des membres",
+    avgLessons: "Leçons moyennes",
+    totalXp: "XP total",
+    avgStreak: "Série moyenne",
+    teamMembers: "Membres de l'équipe",
+    member: "Membre",
+    level: "Niveau",
+    lessons: "Leçons",
+    streak: "Série",
+    status: "Statut",
+    actions: "Actions",
+    active: "Actif",
+    inactive: "Inactif",
+    viewAnalytics: "Voir les analyses",
+    analyticsDesc: "Rapports de progression détaillés et insights",
+    customPaths: "Parcours personnalisés",
+    pathsDesc: "Créez des parcours d'apprentissage sur mesure pour votre équipe",
+    billing: "Facturation & Factures",
+    billingDesc: "Gérez votre abonnement entreprise",
+    inviteTitle: "Inviter un membre de l'équipe",
+    inviteDesc: "Envoyez une invitation par email pour ajouter un nouveau membre.",
+    sendInvite: "Envoyer l'invitation",
+  },
+
   // ── Auth ──
   auth: {
     login: {

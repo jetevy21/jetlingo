@@ -123,6 +123,36 @@ const en = {
     ],
   },
 
+  // ── Enterprise ──
+  enterprise: {
+    title: "Enterprise Dashboard",
+    subtitle: "Manage your team's learning progress",
+    sidebar: "Enterprise",
+    inviteMember: "Invite Member",
+    totalMembers: "Total Members",
+    avgLessons: "Avg Lessons",
+    totalXp: "Total XP",
+    avgStreak: "Avg Streak",
+    teamMembers: "Team Members",
+    member: "Member",
+    level: "Level",
+    lessons: "Lessons",
+    streak: "Streak",
+    status: "Status",
+    actions: "Actions",
+    active: "Active",
+    inactive: "Inactive",
+    viewAnalytics: "View Analytics",
+    analyticsDesc: "Detailed progress reports and insights",
+    customPaths: "Custom Learning Paths",
+    pathsDesc: "Create tailored learning paths for your team",
+    billing: "Billing & Invoices",
+    billingDesc: "Manage your enterprise subscription",
+    inviteTitle: "Invite Team Member",
+    inviteDesc: "Send an email invitation to add a new team member.",
+    sendInvite: "Send Invite",
+  },
+
   // ── Auth ──
   auth: {
     login: {
