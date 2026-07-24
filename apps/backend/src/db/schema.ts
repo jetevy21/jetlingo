@@ -96,3 +96,17 @@ export const userStats = pgTable('user_stats', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
+
+export const subscriptions = pgTable('subscriptions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id),
+  paypalSubscriptionId: text('paypal_subscription_id').notNull().unique(),
+  planId: text('plan_id').notNull(),
+  tier: text('tier').notNull(),
+  status: text('status').notNull().default('active'),
+  startDate: timestamp('start_date').defaultNow().notNull(),
+  nextBillingDate: timestamp('next_billing_date'),
+  cancelDate: timestamp('cancel_date'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});

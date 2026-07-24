@@ -15,4 +15,9 @@ export const config = {
   openaiApiKey: requiredEnv('OPENAI_API_KEY'),
   jwtSecret: requiredEnv('JWT_SECRET'),
   redisUrl: process.env.REDIS_URL || 'redis://localhost:6379',
+  paypalClientId: process.env.PAYPAL_CLIENT_ID || '',
+  paypalClientSecret: process.env.PAYPAL_CLIENT_SECRET || '',
+  paypalMode: process.env.PAYPAL_MODE || 'sandbox',
+  paypalPremiumPlanId: process.env.PAYPAL_PREMIUM_PLAN_ID || '',
+  paypalFamilyPlanId: process.env.PAYPAL_FAMILY_PLAN_ID || '',
 } as const;

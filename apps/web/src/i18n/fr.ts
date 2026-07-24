@@ -239,6 +239,13 @@ const fr = {
     newPassword: "Nouveau mot de passe",
     confirmPassword: "Confirmer le nouveau mot de passe",
     passwordChanged: "Mot de passe modifié",
+    subscription: "Abonnement",
+    currentPlan: "Forfait actuel",
+    manageSubscription: "Gérer l'abonnement",
+    upgradePlan: "Changer de forfait",
+    cancelSubscription: "Annuler l'abonnement",
+    subscriptionActive: "Actif",
+    subscriptionCancelled: "Annulé",
     languages: {
       en: "Anglais",
       fr: "Français",

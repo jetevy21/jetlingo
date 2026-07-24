@@ -11,6 +11,7 @@ import avatarsRoutes from './routes/avatars.js';
 import dictionaryRoutes from './routes/dictionary.js';
 import progressRoutes from './routes/progress.js';
 import multimodalRoutes from './routes/multimodal.js';
+import subscriptionsRoutes from './routes/subscriptions.js';
 
 const app = Fastify({
   logger: {
@@ -44,6 +45,7 @@ await app.register(avatarsRoutes);
 await app.register(dictionaryRoutes);
 await app.register(progressRoutes);
 await app.register(multimodalRoutes);
+await app.register(subscriptionsRoutes);
 
 app.setErrorHandler((error, request, reply) => {
   app.log.error(error);

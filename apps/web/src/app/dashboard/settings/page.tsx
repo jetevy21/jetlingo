@@ -6,7 +6,7 @@ import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import Avatar from "@/components/ui/Avatar";
 import { useI18n } from "@/hooks/useI18n";
-import { User, Globe, Volume2, Camera, Lock } from "lucide-react";
+import { User, Globe, Volume2, Camera, Lock, CreditCard } from "lucide-react";
 
 const languageKeys = ["en", "fr", "es", "de", "it", "pt", "ja", "ko", "zh"] as const;
 const levelKeys = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
@@ -378,6 +378,23 @@ export default function SettingsPage() {
               {isSaving ? t.settings.saving : t.settings.changePassword}
             </Button>
           </div>
+        </div>
+      </div>
+
+      {/* Subscription */}
+      <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50">
+        <div className="flex items-center gap-3 mb-6">
+          <CreditCard size={20} className="text-teal-400" />
+          <h2 className="text-lg font-heading font-semibold text-white">{t.settings.subscription}</h2>
+        </div>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-slate-400 text-sm">{t.settings.currentPlan}</p>
+            <p className="text-white font-medium capitalize">{user?.subscriptionTier || "free"}</p>
+          </div>
+          <Button variant="primary" onClick={() => window.location.href = "/dashboard/pricing"}>
+            {user?.subscriptionTier === "free" ? t.settings.upgradePlan : t.settings.manageSubscription}
+          </Button>
         </div>
       </div>
 

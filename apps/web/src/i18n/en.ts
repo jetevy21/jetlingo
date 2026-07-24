@@ -238,6 +238,13 @@ const en = {
     newPassword: "New Password",
     confirmPassword: "Confirm New Password",
     passwordChanged: "Password changed",
+    subscription: "Subscription",
+    currentPlan: "Current Plan",
+    manageSubscription: "Manage Subscription",
+    upgradePlan: "Upgrade Plan",
+    cancelSubscription: "Cancel Subscription",
+    subscriptionActive: "Active",
+    subscriptionCancelled: "Cancelled",
     languages: {
       en: "English",
       fr: "French",
