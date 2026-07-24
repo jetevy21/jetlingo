@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JetLingo — Manuel Utilisateur</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; display: flex; min-height: 100vh; background: #f8f9fa; color: #1a1a2e; }
+
+    /* Sidebar */
+    .sidebar { position: fixed; top: 0; left: 0; width: 280px; height: 100vh; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #fff; overflow-y: auto; padding: 24px 0; z-index: 100; transition: transform 0.3s ease; }
+    .sidebar-header { padding: 0 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .sidebar-header h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+    .sidebar-header span { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+    .sidebar nav { padding: 16px 0; }
+    .sidebar nav a { display: block; padding: 10px 24px; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; border-left: 3px solid transparent; }
+    .sidebar nav a:hover, .sidebar nav a.active { background: rgba(255,255,255,0.08); color: #fff; border-left-color: #e94560; }
+    .sidebar nav a .nav-num { display: inline-block; width: 24px; height: 24px; background: rgba(255,255,255,0.1); border-radius: 6px; text-align: center; line-height: 24px; font-size: 0.75rem; margin-right: 10px; font-weight: 600; }
+
+    /* Main content */
+    .main { margin-left: 280px; flex: 1; padding: 40px 48px 80px; max-width: 900px; }
+
+    /* Badge */
+    .badge { display: inline-block; background: #e94560; color: #fff; padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px; }
+
+    /* Header */
+    .doc-header { margin-bottom: 48px; }
+    .doc-header h1 { font-size: 2.4rem; font-weight: 800; color: #1a1a2e; margin-bottom: 8px; line-height: 1.2; }
+    .doc-header .version { color: #6c757d; font-size: 0.95rem; }
+
+    /* Sections */
+    .section { margin-bottom: 48px; }
+    .section h2 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #e94560; display: flex; align-items: center; gap: 10px; }
+    .section h2 .section-num { background: #e94560; color: #fff; width: 32px; height: 32px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
+    .section h3 { font-size: 1.15rem; font-weight: 600; color: #16213e; margin: 20px 0 10px; }
+    .section p, .section li { line-height: 1.7; color: #333; }
+    .section ul, .section ol { padding-left: 24px; margin-bottom: 12px; }
+    .section li { margin-bottom: 8px; }
+
+    /* Steps */
+    .steps { list-style: none; padding-left: 0; counter-reset: step; }
+    .steps li { counter-increment: step; position: relative; padding-left: 48px; margin-bottom: 16px; }
+    .steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 32px; height: 32px; background: linear-gradient(135deg, #e94560, #c23152); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; }
+
+    /* Info boxes */
+    .info-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .info-box.tip { border-left: 4px solid #38a169; }
+    .info-box.warning { border-left: 4px solid #e94560; }
+    .info-box.info { border-left: 4px solid #3182ce; }
+    .info-box h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: #1a1a2e; }
+
+    /* Subsection cards */
+    .mode-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .mode-card h3 { margin-top: 0; color: #e94560; }
+    .mode-card h3::before { content: ''; display: inline-block; width: 8px; height: 8px; background: #e94560; border-radius: 50%; margin-right: 8px; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; margin-bottom: 16px; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #eee; }
+    th { background: #1a1a2e; color: #fff; font-weight: 600; font-size: 0.9rem; }
+    td { font-size: 0.9rem; }
+
+    /* Score colors */
+    .score-green { color: #38a169; font-weight: 700; }
+    .score-orange { color: #dd6b20; font-weight: 700; }
+    .score-red { color: #e53e3e; font-weight: 700; }
+
+    /* FAQ */
+    details { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    details summary { padding: 16px 20px; font-weight: 600; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px; }
+    details summary::before { content: '▸'; color: #e94560; font-size: 1rem; transition: transform 0.2s; }
+    details[open] summary::before { transform: rotate(90deg); }
+    details .faq-answer { padding: 0 20px 16px; color: #555; line-height: 1.7; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .contact-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; text-align: center; }
+    .contact-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .contact-card h4 { margin-bottom: 6px; }
+    .contact-card a { color: #e94560; text-decoration: none; font-weight: 600; }
+
+    /* PDF button */
+    .pdf-btn { position: fixed; bottom: 32px; right: 32px; background: linear-gradient(135deg, #e94560, #c23152); color: #fff; border: none; padding: 14px 28px; border-radius: 50px; font-size: 0.95rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 16px rgba(233,69,96,0.4); transition: all 0.3s; z-index: 200; display: flex; align-items: center; gap: 8px; }
+    .pdf-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(233,69,96,0.5); }
+
+    /* Mobile menu toggle */
+    .menu-toggle { display: none; position: fixed; top: 16px; left: 16px; z-index: 150; background: #1a1a2e; color: #fff; border: none; width: 44px; height: 44px; border-radius: 10px; font-size: 1.3rem; cursor: pointer; }
+
+    /* Print styles */
+    @media print {
+      .no-print, .menu-toggle { display: none !important; }
+      .sidebar { position: static; width: 240px; height: auto; page-break-after: always; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .main { margin-left: 0; padding: 20px; }
+      body { display: block; }
+      .section { page-break-inside: avoid; }
+    }
+
+    @media (max-width: 900px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .main { margin-left: 0; padding: 24px 20px 80px; }
+      .menu-toggle { display: flex; align-items: center; justify-content: center; }
+      .doc-header h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile menu toggle -->
+  <button class="menu-toggle no-print" onclick="document.querySelector('.sidebar').classList.toggle('open')" aria-label="Menu">☰</button>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>JetLingo</h2>
+      <span>Manuel Utilisateur v1.0</span>
+    </div>
+    <nav>
+      <a href="#bienvenue"><span class="nav-num">0</span>Bienvenue</a>
+      <a href="#demarrage-rapide"><span class="nav-num">1</span>Démarrage rapide</a>
+      <a href="#interface"><span class="nav-num">2</span>Comprendre l'interface</a>
+      <a href="#premiere-conversation"><span class="nav-num">3</span>Première conversation</a>
+      <a href="#modes-apprentissage"><span class="nav-num">4</span>Modes d'apprentissage</a>
+      <a href="#feedback"><span class="nav-num">5</span>Comprendre le feedback</a>
+      <a href="#dictionnaire"><span class="nav-num">6</span>Gérer votre dictionnaire</a>
+      <a href="#progression"><span class="nav-num">7</span>Suivre vos progrès</a>
+      <a href="#personnalisation"><span class="nav-num">8</span>Personnaliser votre expérience</a>
+      <a href="#astuces"><span class="nav-num">9</span>Astuces pour progresser</a>
+      <a href="#faq"><span class="nav-num">10</span>FAQ</a>
+      <a href="#support"><span class="nav-num">11</span>Support</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- En-tête -->
+    <header class="doc-header" id="top">
+      <span class="badge">Manuel Utilisateur</span>
+      <h1>JetLingo — Guide Utilisateur</h1>
+      <p class="version">Version 1.0 — Juillet 2026</p>
+    </header>
+
+    <!-- 0. Bienvenue -->
+    <section class="section" id="bienvenue">
+      <h2><span class="section-num">0</span> Bienvenue</h2>
+      <p>Bienvenue dans JetLingo ! Cette application vous permet d'apprendre une langue en conversationnant avec des tuteurs IA dotés de personnalités uniques. Obtenez un feedback en temps réel sur votre prononciation et votre grammaire.</p>
+      <div class="info-box tip">
+        <h4>Pourquoi JetLingo ?</h4>
+        <p>Contrairement aux méthodes traditionnelles, JetLingo vous immerge dans de vraies conversations. Nos avatars IA s'adaptent à votre niveau, vous corrigent en douceur et rendent l'apprentissage aussi naturel que discuter avec un ami.</p>
+      </div>
+    </section>
+
+    <!-- 1. Démarrage rapide -->
+    <section class="section" id="demarrage-rapide">
+      <h2><span class="section-num">1</span> Démarrage rapide</h2>
+      <p>Suivez ces étapes pour commencer votre aventure linguistique :</p>
+      <ol class="steps">
+        <li><strong>Télécharger l'application</strong> — Disponible sur l'App Store (iOS) et Google Play (Android), ou rendez-vous directement sur <em>jetlingo.app</em> depuis votre navigateur.</li>
+        <li><strong>Créer un compte</strong> — Inscrivez-vous avec votre adresse email ou connectez-vous directement via Google ou Apple.</li>
+        <li><strong>Choisir votre langue cible</strong> — Sélectionnez la langue que vous souhaitez apprendre parmi les 9 langues disponibles.</li>
+        <li><strong>Répondre au quiz de niveau</strong> — Un court questionnaire évalue votre niveau actuel afin de personnaliser votre parcours d'apprentissage.</li>
+        <li><strong>Sélectionner un avatar tuteur</strong> — Parcourez nos tuteurs IA et choisissez celui qui correspond le mieux à votre style d'apprentissage.</li>
+        <li><strong>Commencer votre première leçon !</strong> — Lancez-vous et découvrez la magie de l'apprentissage conversationnel.</li>
+      </ol>
+    </section>
+
+    <!-- 2. Comprendre l'interface -->
+    <section class="section" id="interface">
+      <h2><span class="section-num">2</span> Comprendre l'interface</h2>
+      <p>L'application est organisée en plusieurs sections principales accessibles depuis la barre de navigation inférieure :</p>
+
+      <div class="info-box info">
+        <h4>Dashboard</h4>
+        <p>Votre vue d'ensemble quotidienne. Retrouvez votre streak en cours, la leçon du jour recommandée, et des actions rapides pour commencer une conversation, réviser votre dictionnaire ou consulter vos statistiques.</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>Cours</h4>
+        <p>Le parcours d'apprentissage séquentiel, organisé par niveaux CEFR (A1 à C2). Chaque cours contient plusieurs leçons thématiques. Utilisez les filtres par catégorie (vocabulaire, grammaire, conversation) pour trouver exactement ce dont vous avez besoin.</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>Practice</h4>
+        <p>Accédez aux sujets de conversation prédéfinis ou lancez un mode Free Talk pour une conversation sans contrainte. C'est ici que vous mettez en pratique ce que vous avez appris.</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>Dictionnaire</h4>
+        <p>Tous les mots que vous avez sauvegardés pendant vos conversations. Chaque entrée inclut la traduction, la prononciation et la phrase contextuelle d'origine.</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>Statistiques</h4>
+        <p>Des graphiques détaillés et des métriques pour suivre votre progression : temps total d'apprentissage, nombre de sessions, mots appris, scores moyens et évolution dans le temps.</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>Paramètres</h4>
+        <p>Gérez votre profil, changez la langue cible, sélectionnez votre accent préférez et ajustez vos objectifs d'apprentissage.</p>
+      </div>
+    </section>
+
+    <!-- 3. Votre première conversation -->
+    <section class="section" id="premiere-conversation">
+      <h2><span class="section-num">3</span> Votre première conversation</h2>
+      <p>Lancez-vous dans votre première conversation avec un tuteur IA en suivant ces étapes :</p>
+
+      <ol class="steps">
+        <li><strong>Sélectionner un avatar</strong> — Chaque tuteur IA possède une personnalité distincte. Par exemple, Sofia est patiente et encourageuse, idéale pour les débutants. Marcus est plus exigeant et adore débattre, parfait pour les apprenants intermédiaires avancés. Yuki est créative et adore les jeux de rôle. Explorez les profils pour trouver votre match.</li>
+        <li><strong>Choisir un mode</strong> — Optez pour une <em>Leçon</em> guidée si vous débutez, le <em>Free Talk</em> pour une conversation libre, ou un sujet <em>Practice</em> ciblé.</li>
+        <li><strong>Parler en appuyant sur le bouton microphone</strong> — Appuyez et maintenez le bouton mic pour parler. L'application transcrit votre parole en temps réel.</li>
+        <li><strong>L'avatar vous répond en temps réel</strong> — Votre tuteur IA vous répond instantanément, avec une prononciation naturelle et adaptée à votre niveau.</li>
+        <li><strong>Voir les corrections</strong> — Appuyez sur « Feedback » pour afficher les corrections de prononciation, les suggestions grammaticales et les alternatives de vocabulaire.</li>
+        <li><strong>Sauvegarder les nouveaux mots</strong> — Tapez sur l'icône 💾 à côté d'un mot inconnu pour l'ajouter à votre dictionnaire personnel.</li>
+      </ol>
+
+      <div class="info-box tip">
+        <h4>Conseil</h4>
+        <p>N'hésitez pas à faire des erreurs ! C'est en se trompant qu'on apprend le mieux. Les avatars sont bienveillants et vous corrigeront sans vous décourager.</p>
+      </div>
+    </section>
+
+    <!-- 4. Modes d'apprentissage -->
+    <section class="section" id="modes-apprentissage">
+      <h2><span class="section-num">4</span> Modes d'apprentissage</h2>
+      <p>JetLingo propose plusieurs modes pour s'adapter à tous les styles d'apprentissage :</p>
+
+      <div class="mode-card">
+        <h3>Mode Leçon</h3>
+        <p>Un parcours guidé avec des objectifs clairs. L'avatar vous guide à travers la leçon étape par étape, avec des exercices interactifs intégrés. En fin de leçon, vous recevez un score détaillé qui mesure votre compréhension et votre progression. Idéal pour les débutants ou pour aborder un nouveau sujet de manière structurée.</p>
+        <ul>
+          <li>Objectifs pédagogiques définis au début</li>
+          <li>Exercices interactifs (QCM, complétion, rôle-play)</li>
+          <li>Score et récapitulatif en fin de leçon</li>
+          <li>Progression sauvegardée automatiquement</li>
+        </ul>
+      </div>
+
+      <div class="mode-card">
+        <h3>Mode Free Talk</h3>
+        <p>Une conversation libre sur n'importe quel sujet, sans script imposé. Vous parlez de ce qui vous intéresse et l'avatar s'adapte à votre registre de langue. Idéal pour les apprenants intermédiaires qui souhaitent gagner en fluidité et en confiance.</p>
+        <ul>
+          <li>Aucun script ni contrainte de sujet</li>
+          <li>L'avatar s'adapte à votre niveau et à vos centres d'intérêt</li>
+          <li>Parfait pour développer la fluidité orale</li>
+          <li>Corrections subtiles en cours de conversation</li>
+        </ul>
+      </div>
+
+      <div class="mode-card">
+        <h3>Mode Practice</h3>
+        <p>Plus de 140 sujets prédéfinis couvrant des situations de la vie quotidienne : restaurant, entretien d'embauche, voyage, shopping, médecin, etc. Les conversations sont ciblées et adaptées à des situations réelles que vous pourriez rencontrer.</p>
+        <ul>
+          <li>140+ thèmes organisés par catégorie</li>
+          <li>Conversations simulées proches de la réalité</li>
+          <li>Vocabulaire spécialisé par domaine</li>
+          <li>Adapté à la préparation de situations concrètes</li>
+        </ul>
+      </div>
+
+      <div class="mode-card">
+        <h3>Mode Multimodal</h3>
+        <p>Une expérience d'apprentissage enrichie qui combine image, document et conversation. Uploadez une photo pour démarrer une conversation à son sujet, ou téléversez un document pour pratiquer la compréhension écrite et orale. Idéal pour préparer un entretien d'embauche en discutant de votre CV, par exemple.</p>
+        <ul>
+          <li>Uploader une photo → conversation contextuelle sur l'image</li>
+          <li>Uploader un document → pratique basée sur le contenu</li>
+          <li>Préparation d'entretien avec analyse de CV</li>
+          <li>Apprentissage visuel et contextuel</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. Comprendre le feedback -->
+    <section class="section" id="feedback">
+      <h2><span class="section-num">5</span> Comprendre le feedback</h2>
+      <p>Après chaque conversation, JetLingo vous fournit un feedback détaillé pour vous aider à progresser efficacement :</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Élément</th>
+            <th>Description</th>
+            <th>Détails</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Score de prononciation</strong></td>
+            <td>Note de 0 à 100</td>
+            <td>
+              <span class="score-green">Vert (&gt;80)</span> — Excellente prononciation<br>
+              <span class="score-orange">Orange (60–80)</span> — Bonne prononciation avec des axes d'amélioration<br>
+              <span class="score-red">Rouge (&lt;60)</span> — À travailler, des exercices ciblés sont recommandés
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Corrections grammaticales</strong></td>
+            <td>Retouches en temps réel</td>
+            <td>L'IA souligne l'erreur dans votre phrase, affiche la correction et explique la règle grammaticale associée de manière claire et concise.</td>
+          </tr>
+          <tr>
+            <td><strong>Suggestions</strong></td>
+            <td>Amélioration du style</td>
+            <td>Alternatives de vocabulaire plus riche, tournures plus naturelles et expressions idiomatiques pour rendre votre语言 plus fluide.</td>
+          </tr>
+          <tr>
+            <td><strong>Récapitulatif</strong></td>
+            <td>Bilan de session</td>
+            <td>En fin de session, un résumé affiche vos progrès, les points à retravailler et les recommandations personnalisées pour votre prochaine session.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 6. Gérer votre dictionnaire -->
+    <section class="section" id="dictionnaire">
+      <h2><span class="section-num">6</span> Gérer votre dictionnaire</h2>
+      <p>Votre dictionnaire personnel s'enrichit au fil de vos conversations. Voici comment l'utiliser :</p>
+
+      <div class="info-box info">
+        <h4>Sauvegarder un mot</h4>
+        <p>Lorsque vous rencontrez un mot nouveau pendant une conversation, tapez sur l'icône 💾 située à côté du mot pour l'ajouter instantanément à votre dictionnaire.</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>Consulter votre dictionnaire</h4>
+        <p>Accédez à l'onglet « Dictionnaire » depuis la barre de navigation. Tous vos mots sauvegardés y sont listés, triés par date d'ajout ou par catégorie.</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>Contexte</h4>
+        <p>Chaque mot est accompagné de la phrase exacte dans laquelle il a été rencontré. Ce contexte vous aide à mieux comprendre l'usage et la nuance du mot.</p>
+      </div>
+
+      <div class="info-box tip">
+        <h4>Astuce</h4>
+        <p>Révisez régulièrement votre dictionnaire en utilisant le mode révision. L'application vous propose des quiz de mémoire pour ancrer les mots dans votre mémoire à long terme.</p>
+      </div>
+    </section>
+
+    <!-- 7. Suivre vos progrès -->
+    <section class="section" id="progression">
+      <h2><span class="section-num">7</span> Suivre vos progrès</h2>
+      <p>JetLingo vous fournit des outils complets pour visualiser et mesurer votre progression :</p>
+
+      <div class="info-box info">
+        <h4>🔥 Streak</h4>
+        <p>Nombre de jours consécutifs d'apprentissage. Maintenez votre série en réalisant au moins une conversation par jour. Le streak est un puissant moteur de motivation !</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>⭐ XP (Points d'expérience)</h4>
+        <p>Les points d'expérience sont gagnés à chaque conversation, leçon complétée et mot sauvegardé. Ils reflètent votre engagement global dans l'apprentissage.</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>📊 Niveau CEFR</h4>
+        <p>Votre niveau évolue de A1 (débutant absolu) à C2 (maîtrise) en suivant le Cadre Européen Commun de Référence pour les Langues. JetLingo évalue votre niveau automatiquement en fonction de vos performances.</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>📈 Statistiques détaillées</h4>
+        <p>Consultez des métriques complètes : temps total d'apprentissage, nombre de sessions, mots appris, scores moyens de prononciation, et évolution de votre niveau dans le temps.</p>
+      </div>
+
+      <div class="info-box info">
+        <h4>📉 Graphiques</h4>
+        <p>Visualisez votre progression quotidienne et hebdomadaire sous forme de graphiques interactifs. Identifiez vos points forts et les domaines qui nécessitent plus d'attention.</p>
+      </div>
+    </section>
+
+    <!-- 8. Personnaliser votre expérience -->
+    <section class="section" id="personnalisation">
+      <h2><span class="section-num">8</span> Personnaliser votre expérience</h2>
+      <p>Adaptez JetLingo à vos préférences pour une expérience d'apprentissage sur mesure :</p>
+
+      <ul>
+        <li><strong>Changer d'avatar à tout moment</strong> — Vous n'êtes pas obligé de rester avec le même tuteur. Explorez les différentes personnalités et trouvez celle qui vous motive le plus. Chaque avatar a un style pédagogique différent.</li>
+        <li><strong>Modifier l'accent préféré</strong> — Sélectionnez l'accent qui correspond à votre objectif : anglais américain (US), britannique (UK), australien, latino-américain, espagnol d'Espagne, etc.</li>
+        <li><strong>Changer l'objectif</strong> — Indiquez votre motivation principale (Voyage, Travail, Examen, Culture, Plaisir) et l'adaptation du contenu sera ajustée en conséquence.</li>
+        <li><strong>Ajuster le niveau de difficulté</strong> — Même si l'IA détecte votre niveau, vous pouvez manuellement augmenter ou diminuer la difficulté pour vous challenger ou renforcer vos acquis.</li>
+      </ul>
+
+      <div class="info-box tip">
+        <h4>Conseil</h4>
+        <p>Alternez les avatars de temps en temps pour vous habituer à différents accents et styles de communication. C'est un excellent moyen de préparer des conversations réelles !</p>
+      </div>
+    </section>
+
+    <!-- 9. Astuces pour progresser -->
+    <section class="section" id="astuces">
+      <h2><span class="section-num">9</span> Astuces pour progresser</h2>
+      <p>Voici nos conseils pour tirer le maximum de JetLingo :</p>
+
+      <div class="info-box tip">
+        <h4>Conseils quotidiens</h4>
+        <ul>
+          <li><strong>Pratiquez 20 minutes par jour minimum</strong> — La régularité est la clé. Mieux vaut 20 minutes chaque jour que 2 heures une fois par semaine.</li>
+          <li><strong>N'ayez pas peur de faire des erreurs</strong> — Les erreurs sont des opportunités d'apprentissage. Nos avatars sont bienveillants et vous encouragent.</li>
+          <li><strong>Utilisez le mode Free Talk</strong> — C'est le meilleur moyen de gagner en fluidité et en confiance. Parlez de ce qui vous passionne.</li>
+          <li><strong>Sauvegardez les mots nouveaux</strong> — Construisez votre dictionnaire personnel au fil du temps. C'est un outil précieux pour la révision.</li>
+          <li><strong>Révisez votre dictionnaire régulièrement</strong> — Prenez 5 minutes pour relire les mots sauvegardés. La répétition espacée est un technique redoutablement efficace.</li>
+          <li><strong>Alternez entre les différents modes</strong> — Leçon pour apprendre, Free Talk pour pratiquer, Practice pour des situations spécifiques. La variété entretient la motivation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 10. FAQ -->
+    <section class="section" id="faq">
+      <h2><span class="section-num">10</span> FAQ</h2>
+      <p>Les questions les plus fréquentes sur JetLingo :</p>
+
+      <details>
+        <summary>L'application est-elle gratuite ?</summary>
+        <div class="faq-answer">Oui ! JetLingo est gratuit. Vous bénéficiez de 3 conversations gratuites par jour. Passez à Premium pour un accès illimité à toutes les fonctionnalités, y compris le mode hors-ligne et les leçons avancées.</div>
+      </details>
+
+      <details>
+        <summary>Combien de langues sont supportées ?</summary>
+        <div class="faq-answer">JetLingo supporte 9 langues : English, Spanish, French, Portuguese, German, Italian, Japanese, Korean et Chinese. De nouvelles langues seront ajoutées prochainement.</div>
+      </details>
+
+      <details>
+        <summary>Puis-je utiliser l'application hors-ligne ?</summary>
+        <div class="faq-answer">Oui ! Avec un abonnement Premium, vous pouvez télécharger les leçons pour les utiliser sans connexion internet. Parfait pour voyager ou quand vous n'avez pas accès au Wi-Fi.</div>
+      </details>
+
+      <details>
+        <summary>Mon avatar se souvient-il de moi ?</summary>
+        <div class="faq-answer">Oui, absolument. Votre avatar se souvient de vos conversations passées, de vos erreurs fréquentes et de vos centres d'intérêt. Cela permet des conversations de plus en plus personnalisées et pertinentes.</div>
+      </details>
+
+      <details>
+        <summary>Comment fonctionne le streak ?</summary>
+        <div class="faq-answer">Faites au moins 1 conversation par jour pour maintenir votre streak. Même une courte conversation de 2 minutes suffit. Le compteur se réinitialise si vous passez une journée sans pratique.</div>
+      </details>
+
+      <details>
+        <summary>Puis-je changer de langue cible ?</summary>
+        <div class="faq-answer">Oui ! Rendez-vous dans Paramètres &gt; Langue cible pour changer à tout moment. Votre progression dans la nouvelle langue sera suivie séparément.</div>
+      </details>
+
+      <details>
+        <summary>L'IA peut-elle remplacer un tuteur humain ?</summary>
+        <div class="faq-answer">JetLingo est un complément excellent à l'apprentissage traditionnel. Il offre une pratique disponible 24h/24, sans jugement et à votre rythme. Cependant, un tuteur humain reste recommandé pour le feedback culturel, les nuances subtiles et l'accompagnement personnalisé.</div>
+      </details>
+    </section>
+
+    <!-- 11. Support -->
+    <section class="section" id="support">
+      <h2><span class="section-num">11</span> Support</h2>
+      <p>Besoin d'aide ? Notre équipe est là pour vous accompagner :</p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="icon">📧</div>
+          <h4>Email</h4>
+          <p>Contactez-nous directement</p>
+          <a href="mailto:support@jetlingo.app">support@jetlingo.app</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">❓</div>
+          <h4>FAQ en ligne</h4>
+          <p>Consultez les questions fréquentes</p>
+          <a href="https://jetlingo.app/faq">jetlingo.app/faq</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">👥</div>
+          <h4>Communauté</h4>
+          <p>Rejoignez notre communauté d'apprenants</p>
+          <a href="https://jetlingo.app/community">jetlingo.app/community</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PDF Download Button -->
+  <button class="pdf-btn no-print" onclick="window.print()" title="Télécharger en PDF">
+    📄 Télécharger en PDF
+  </button>
+
+  <script>
+    // Highlight active sidebar link on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.section[id]');
+      const navLinks = document.querySelectorAll('.sidebar nav a');
+
+      function setActive() {
+        let current = '';
+        sections.forEach(function(section) {
+          const sectionTop = section.offsetTop - 100;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', setActive);
+      setActive();
+
+      // Close sidebar on mobile when a link is clicked
+      navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 900) {
+            document.querySelector('.sidebar').classList.remove('open');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

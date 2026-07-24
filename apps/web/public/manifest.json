@@ -1,0 +1,29 @@
+{
+  "name": "JetLingo - Apprentissage de langues par IA",
+  "short_name": "JetLingo",
+  "description": "Parlez comme un natif. Apprenez avec des conversations IA et des avatars 3D.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#06b6d4",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "language"],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

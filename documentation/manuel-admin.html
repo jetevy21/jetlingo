@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JetLingo — Manuel Administrateur</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="doc-wrapper">
+
+  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <aside class="sidebar-nav">
+    <div class="logo">
+      <h2>✈️ Jet<span>Lingo</span></h2>
+    </div>
+    <nav>
+      <div class="section-label">Navigation</div>
+      <a href="#introduction">Introduction</a>
+      <a href="#prerequis">Prérequis</a>
+      <a href="#installation">Installation</a>
+      <a href="#configuration">Configuration</a>
+      <div class="section-label">Administration</div>
+      <a href="#base-de-donnees">Base de données</a>
+      <a href="#avatars">Gestion des avatars</a>
+      <a href="#lecons">Gestion des leçons</a>
+      <div class="section-label">Maintenance</div>
+      <a href="#monitoring">Monitoring &amp; Logs</a>
+      <a href="#securite">Sécurité</a>
+      <a href="#deploiement">Déploiement</a>
+      <a href="#depannage">Dépannage</a>
+      <a href="#annexes">Annexes</a>
+    </nav>
+  </aside>
+
+  <!-- ═══════════════ CONTENT ═══════════════ -->
+  <main class="content-area">
+
+    <!-- ── Header ── -->
+    <header class="doc-header">
+      <span class="badge">Manuel Admin</span>
+      <h1>JetLingo — Manuel Administrateur</h1>
+      <p>Guide complet pour déployer, configurer et maintenir l'application d'apprentissage linguistique par IA.</p>
+      <div class="meta">
+        <span>📄 Version 1.0</span>
+        <span>📅 Juillet 2026</span>
+        <span>🔧 Dernière mise à jour : 21/07/2026</span>
+      </div>
+      <br>
+      <button class="download-btn no-print" onclick="window.print()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+        Télécharger en PDF
+      </button>
+    </header>
+
+    <div class="doc-container">
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 1 — INTRODUCTION                      -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="introduction">
+        <h2>📖 Introduction</h2>
+        <p>Ce manuel s'adresse aux administrateurs et développeurs chargés de déployer, configurer et maintenir <strong>JetLingo</strong>, une application d'apprentissage des langues propulsée par l'intelligence artificielle.</p>
+        <p>JetLingo utilise des avatars IA conversationnels pour offrir une expérience d'apprentissage immersive et personnalisée. Ce document couvre l'ensemble des aspects techniques nécessaires au bon fonctionnement de l'application en environnement de production.</p>
+
+        <div class="info-box">
+          <span class="icon">ℹ️</span>
+          <div>Pour le manuel utilisateur, consultez le document <code>manuel-utilisateur.html</code> disponible dans le même dossier.</div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 2 — PRÉREQUIS                         -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="prerequis">
+        <h2>⚙️ Prérequis</h2>
+        <p>Avant de commencer l'installation, assurez-vous que votre environnement dispose des éléments suivants :</p>
+
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Technologie</th>
+                <th>Version requise</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Node.js</strong></td>
+                <td><code>18+</code></td>
+                <td>Vérifier avec <code>node -v</code></td>
+              </tr>
+              <tr>
+                <td><strong>PostgreSQL</strong></td>
+                <td><code>14+</code></td>
+                <td>Base de données principale</td>
+              </tr>
+              <tr>
+                <td><strong>Redis</strong></td>
+                <td>—</td>
+                <td>Optionnel, pour le cache et les sessions</td>
+              </tr>
+              <tr>
+                <td><strong>Compte OpenAI</strong></td>
+                <td>—</td>
+                <td>Clé API requise pour les fonctionnalités IA</td>
+              </tr>
+              <tr>
+                <td><strong>npm ou yarn</strong></td>
+                <td><code>npm 9+</code> ou <code>yarn 1.22+</code></td>
+                <td>Gestionnaire de paquets</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 3 — INSTALLATION                      -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="installation">
+        <h2>🚀 Installation</h2>
+        <p>Suivez les étapes suivantes dans l'ordre pour installer et démarrer JetLingo en mode développement :</p>
+
+        <ol class="steps">
+          <li>
+            <div>
+              <strong>Cloner le dépôt</strong>
+              <pre><code>git clone https://github.com/yourusername/jetlingo.git
+cd jetlingo</code></pre>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Installer les dépendances</strong>
+              <pre><code>npm install</code></pre>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Copier le fichier d'environnement</strong>
+              <pre><code>cp apps/backend/.env.example apps/backend/.env</code></pre>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Configurer les variables d'environnement</strong>
+              <p>Éditez le fichier <code>apps/backend/.env</code> avec vos paramètres. Consultez la section <a href="#configuration">Configuration</a> pour le détail de chaque variable.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Créer l'utilisateur et la base PostgreSQL</strong>
+              <pre><code>psql -U postgres -c "CREATE USER jetlingo WITH PASSWORD 'JetLingo2026!';"
+psql -U postgres -c "CREATE DATABASE jetlingo OWNER jetlingo;"</code></pre>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Appliquer le schéma et charger les données</strong>
+              <pre><code>cd apps/backend
+npx drizzle-kit push
+npm run seed
+cd ../..</code></pre>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Démarrer le serveur de développement</strong>
+              <pre><code>npm run dev</code></pre>
+              <p>L'application est accessible sur <code>http://localhost:3000</code> (frontend) et <code>http://localhost:4000</code> (backend API).</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="success-box">
+          <span class="icon">✅</span>
+          <div>Si toutes les étapes sont correctement exécutées, le serveur backend démarre et la base de données contient 50+ avatars et 40+ leçons.</div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 4 — CONFIGURATION                     -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="configuration">
+        <h2>🔧 Configuration</h2>
+
+        <h3>4.1 — Variables d'environnement</h3>
+        <p>Le fichier <code>apps/backend/.env</code> contient l'ensemble des paramètres de configuration :</p>
+
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Description</th>
+                <th>Exemple</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>DATABASE_URL</code></td>
+                <td>Chaîne de connexion PostgreSQL</td>
+                <td><code>postgresql://jetlingo:JetLingo2026!@localhost:5432/jetlingo</code></td>
+              </tr>
+              <tr>
+                <td><code>OPENAI_API_KEY</code></td>
+                <td>Clé secrète de l'API OpenAI</td>
+                <td><code>sk-proj-xxxxxxxxxxxx</code></td>
+              </tr>
+              <tr>
+                <td><code>OPENAI_MODEL</code></td>
+                <td>Modèle IA principal pour les conversations</td>
+                <td><code>gpt-4o</code></td>
+              </tr>
+              <tr>
+                <td><code>OPENAI_MAX_TOKENS</code></td>
+                <td>Nombre maximum de tokens par réponse</td>
+                <td><code>512</code></td>
+              </tr>
+              <tr>
+                <td><code>OPENAI_TEMPERATURE</code></td>
+                <td>Créativité du modèle (0.0 à 2.0)</td>
+                <td><code>0.7</code></td>
+              </tr>
+              <tr>
+                <td><code>JWT_SECRET</code></td>
+                <td>Secret pour la signature des tokens JWT</td>
+                <td><code>un-secret-ultra-securise-2026</code></td>
+              </tr>
+              <tr>
+                <td><code>JWT_EXPIRATION</code></td>
+                <td>Durée de validité des tokens (en secondes)</td>
+                <td><code>86400</code> (24h)</td>
+              </tr>
+              <tr>
+                <td><code>PORT</code></td>
+                <td>Port du serveur backend</td>
+                <td><code>4000</code></td>
+              </tr>
+              <tr>
+                <td><code>REDIS_URL</code></td>
+                <td>Connexion Redis (optionnel)</td>
+                <td><code>redis://localhost:6379</code></td>
+              </tr>
+              <tr>
+                <td><code>NODE_ENV</code></td>
+                <td>Environnement d'exécution</td>
+                <td><code>development</code> ou <code>production</code></td>
+              </tr>
+              <tr>
+                <td><code>CORS_ORIGIN</code></td>
+                <td>Origines autorisées (séparées par des virgules)</td>
+                <td><code>http://localhost:3000</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>4.2 — Configuration OpenAI</h3>
+        <div class="card-grid">
+          <div class="card">
+            <h4>Modèle GPT-4o</h4>
+            <p>Utilisé pour les conversations avec les avatars. Coût estimé : ~$0.005 / 1K tokens input, ~$0.015 / 1K tokens output.</p>
+          </div>
+          <div class="card">
+            <h4>Modèle Whisper</h4>
+            <p>Utilisé pour la reconnaissance vocale (prononciation). Coût estimé : ~$0.006 / minute audio.</p>
+          </div>
+          <div class="card">
+            <h4>Modèle TTS-1-HD</h4>
+            <p>Utilisé pour la synthèse vocale des avatars. Coût estimé : ~$0.030 / 1K caractères.</p>
+          </div>
+        </div>
+
+        <div class="warning-box">
+          <span class="icon">⚠️</span>
+          <div>Suivez attentivement vos coûts OpenAI dans le <a href="https://platform.openai.com/usage" style="color:#fbbf24;">dashboard OpenAI</a>. Configurez un seuil d'alerte budgétaire.</div>
+        </div>
+
+        <h3>4.3 — Configuration JWT</h3>
+        <div class="card">
+          <h4>JWT_SECRET</h4>
+          <p>Chiffrez une valeur aléatoire et complexe. Ne jamais commiter cette clé dans le dépôt Git. Exemple de génération :</p>
+          <pre><code>openssl rand -base64 48</code></pre>
+        </div>
+        <div class="card">
+          <h4>JWT_EXPIRATION</h4>
+          <p>Valeur en secondes. Par défaut : <code>86400</code> (24 heures). Pour un environnement plus strict, réduisez à <code>3600</code> (1 heure) et implémentez un système de refresh token.</p>
+        </div>
+
+        <h3>4.4 — Configuration CORS</h3>
+        <div class="card">
+          <h4>CORS_ORIGIN</h4>
+          <p>Liste des origines autorisées à accéder à l'API, séparées par des virgules. En production, ne jamais utiliser <code>*</code>. Spécifiez uniquement les domaines de votre frontend :</p>
+          <pre><code>CORS_ORIGIN=https://jetlingo.app,https://www.jetlingo.app</code></pre>
+        </div>
+
+        <h3>4.5 — Configuration Redis</h3>
+        <div class="card">
+          <h4>Redis (optionnel)</h4>
+          <p>Redis est utilisé pour le cache des réponses IA, le rate limiting et la gestion des sessions. Si non configuré, l'application fonctionne sans Redis avec des performances réduites.</p>
+          <pre><code>REDIS_URL=redis://localhost:6379</code></pre>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 5 — GESTION DE LA BASE DE DONNÉES     -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="base-de-donnees">
+        <h2>🗄️ Gestion de la base de données</h2>
+
+        <h3>5.1 — Commandes Drizzle</h3>
+        <p>JetLingo utilise <strong>Drizzle ORM</strong> pour la gestion du schéma de la base de données. Ces commandes s'exécutent depuis <code>apps/backend/</code> :</p>
+
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Commande</th>
+                <th>Description</th>
+                <th>Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>npx drizzle-kit push</code></td>
+                <td>Pousse le schéma vers la base de données (sans migration)</td>
+                <td>Développement rapide, écrase les changements</td>
+              </tr>
+              <tr>
+                <td><code>npx drizzle-kit migrate</code></td>
+                <td>Exécute les migrations de manière contrôlée</td>
+                <td>Production, suivi de version</td>
+              </tr>
+              <tr>
+                <td><code>npx drizzle-kit generate</code></td>
+                <td>Génère les fichiers de migration à partir du schéma</td>
+                <td>Avant de commiter un changement de schéma</td>
+              </tr>
+              <tr>
+                <td><code>npx drizzle-kit studio</code></td>
+                <td>Ouvre l'interface graphique Drizzle Studio</td>
+                <td>Exploration visuelle de la base de données</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>5.2 — Script de seed</h3>
+        <p>Le script <code>npm run seed</code> insère les données initiales suivantes dans la base :</p>
+
+        <div class="card-grid">
+          <div class="card">
+            <h4>50+ Avatars</h4>
+            <p>Personnages IA avec des personnalités, nationalités et styles de conversation variés. Chaque avatar a un nom, une bio, un style de dialogue et un type de voix TTS assigné.</p>
+          </div>
+          <div class="card">
+            <h4>40+ Leçons</h4>
+            <p>Contenus pédagogiques couvrant 6 types : conversation, grammaire, vocabulaire, prononciation, roleplay et préparation d'examen. Structurés par niveaux CEFR (A1 à C2).</p>
+          </div>
+          <div class="card">
+            <h4>1 Utilisateur démo</h4>
+            <p>Compte de démonstration : <code>demo@jetlingo.app</code> / <code>demo1234</code>. Utilisable pour tester l'application sans créer de compte.</p>
+          </div>
+        </div>
+
+        <h3>5.3 — Réinitialisation complète</h3>
+        <p>Pour effectuer un reset complet de la base de données :</p>
+        <pre><code>cd apps/backend
+
+# Supprimer et recréer la base de données
+psql -U postgres -c "DROP DATABASE jetlingo;"
+psql -U postgres -c "CREATE DATABASE jetlingo OWNER jetlingo;"
+
+# Repousser le schéma
+npx drizzle-kit push
+
+# Recharger les données
+npm run seed</code></pre>
+
+        <div class="danger-box">
+          <span class="icon">🚨</span>
+          <div><strong>Attention :</strong> Cette opération supprime toutes les données existantes, y compris les comptes utilisateurs et les progrès d'apprentissage. Effectuez une sauvegarde avant d'exécuter cette commande en production.</div>
+        </div>
+
+        <h3>5.4 — Sauvegarde et restauration</h3>
+        <h4>Sauvegarde</h4>
+        <pre><code>pg_dump -U jetlingo -d jetlingo -F c -f jetlingo_backup_$(date +%Y%m%d_%H%M%S).dump</code></pre>
+
+        <h4>Restauration</h4>
+        <pre><code>pg_restore -U jetlingo -d jetlingo -c jetlingo_backup_20260721_120000.dump</code></pre>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 6 — GESTION DES AVATARS               -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="avatars">
+        <h2>🤖 Gestion des avatars</h2>
+
+        <h3>6.1 — Structure de la table avatars</h3>
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Colonne</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>id</code></td>
+                <td><code>UUID</code></td>
+                <td>Identifiant unique (clé primaire)</td>
+              </tr>
+              <tr>
+                <td><code>name</code></td>
+                <td><code>VARCHAR(100)</code></td>
+                <td>Nom d'affichage de l'avatar</td>
+              </tr>
+              <tr>
+                <td><code>personality</code></td>
+                <td><code>TEXT</code></td>
+                <td>Description de la personnalité et du style de conversation</td>
+              </tr>
+              <tr>
+                <td><code>nationality</code></td>
+                <td><code>VARCHAR(50)</code></td>
+                <td>Nationalité ou origine culturelle</td>
+              </tr>
+              <tr>
+                <td><code>language</code></td>
+                <td><code>VARCHAR(10)</code></td>
+                <td>Langue principale (code ISO)</td>
+              </tr>
+              <tr>
+                <td><code>image_url</code></td>
+                <td><code>TEXT</code></td>
+                <td>URL de l'image de profil</td>
+              </tr>
+              <tr>
+                <td><code>voice_id</code></td>
+                <td><code>VARCHAR(100)</code></td>
+                <td>Identifiant de voix TTS (ElevenLabs ou OpenAI)</td>
+              </tr>
+              <tr>
+                <td><code>system_prompt</code></td>
+                <td><code>TEXT</code></td>
+                <td>Prompt système pour l'IA (personnalité, règles, ton)</td>
+              </tr>
+              <tr>
+                <td><code>difficulty_level</code></td>
+                <td><code>VARCHAR(5)</code></td>
+                <td>Niveau CEFR ciblé (A1, A2, B1, B2, C1, C2)</td>
+              </tr>
+              <tr>
+                <td><code>created_at</code></td>
+                <td><code>TIMESTAMPTZ</code></td>
+                <td>Date de création</td>
+              </tr>
+              <tr>
+                <td><code>updated_at</code></td>
+                <td><code>TIMESTAMPTZ</code></td>
+                <td>Dernière mise à jour</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>6.2 — Ajouter un nouvel avatar</h3>
+        <pre><code>INSERT INTO avatars (name, personality, nationality, language, image_url, voice_id, system_prompt, difficulty_level)
+VALUES (
+  'Yuki',
+  'Jeune femme japonaise, amicale et patiente. Elle adore la culture pop et utilise des expressions modernes.',
+  'Japonaise',
+  'ja',
+  'https://cdn.jetlingo.app/avatars/yuki.png',
+  'nova',
+  'Tu es Yuki, une enseignante japonaise amicale. Tu parles un français simple et clair. Tu utilises occasionnellement des mots japonais avec leur traduction. Tu es patiente et encourages l''élève.',
+  'A2'
+);</code></pre>
+
+        <h3>6.3 — Modifier la personnalité d'un avatar</h3>
+        <pre><code>UPDATE avatars
+SET
+  personality = 'Professeur expérimenté et bienveillant. Il utilise des métaphores et des anecdotes pour expliquer la grammaire.',
+  system_prompt = 'Tu es Professeur Bernard, un enseignant français chevronné. Tu expliques la grammaire avec des exemples du quotidien. Tu es patient, encourageant et tu adaptés le niveau de langue à l''élève.',
+  updated_at = NOW()
+WHERE name = 'Professeur Bernard';</code></pre>
+
+        <h3>6.4 — Assigner des voix TTS</h3>
+        <p>Les voix disponibles dépendent du fournisseur TTS utilisé. Pour OpenAI TTS, les voix prédéfinies sont :</p>
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Voice ID</th>
+                <th>Caractéristiques</th>
+                <th>Recommandé pour</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>alloy</code></td>
+                <td>Neutre, équilibré</td>
+                <td>Voix par défaut, tous genres</td>
+              </tr>
+              <tr>
+                <td><code>echo</code></td>
+                <td>Masculine, grave</td>
+                <td>Professeurs masculins</td>
+              </tr>
+              <tr>
+                <td><code>fable</code></td>
+                <td>Féminine, chaleureuse</td>
+                <td>Amis, conversations informelles</td>
+              </tr>
+              <tr>
+                <td><code>nova</code></td>
+                <td>Féminine, professionnelle</td>
+                <td>Enseignants, contexts formels</td>
+              </tr>
+              <tr>
+                <td><code>onyx</code></td>
+                <td>Masculine, profonde</td>
+                <td>Narrateurs, dictées</td>
+              </tr>
+              <tr>
+                <td><code>shimmer</code></td>
+                <td>Féminine, légère</td>
+                <td>Cours pour enfants</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 7 — GESTION DES LEÇONS                -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="lecons">
+        <h2>📚 Gestion des leçons</h2>
+
+        <h3>7.1 — Structure du contenu JSON d'une leçon</h3>
+        <p>Chaque leçon est stockée en JSON dans la colonne <code>content</code> de la table <code>lessons</code>. La structure dépend du type de leçon :</p>
+
+        <h3>7.2 — Types de leçons</h3>
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Structure JSON</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>conversation</code></td>
+                <td>Échanges libres avec un avatar IA</td>
+                <td>Prompt système + thème + objectifs</td>
+              </tr>
+              <tr>
+                <td><code>grammaire</code></td>
+                <td>Exercices de grammaire guidés</td>
+                <td>Règle + exemples + QCM + correction</td>
+              </tr>
+              <tr>
+                <td><code>vocabulaire</code></td>
+                <td>Apprentissage de mots et expressions</td>
+                <td>Mots + traductions + audio + exercices</td>
+              </tr>
+              <tr>
+                <td><code>prononciation</code></td>
+                <td>Exercices de prononciation avec feedback IA</td>
+                <td>Phrases + audio référence + analyse</td>
+              </tr>
+              <tr>
+                <td><code>roleplay</code></td>
+                <td>Scénarios immersifs (restaurant, aéroport...)</td>
+                <td>Scénario + personnages + choix multiples</td>
+              </tr>
+              <tr>
+                <td><code>exam_prep</code></td>
+                <td>Préparation aux examens officiels</td>
+                <td>Exercices type DELF/TCF + barème</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>7.3 — Ajouter une leçon (exemple complet)</h3>
+        <pre><code>{
+  "title": "Au restaurant",
+  "type": "roleplay",
+  "level": "A2",
+  "category": "vie-quotidienne",
+  "duration_minutes": 15,
+  "objectives": [
+    "Commander un repas au restaurant",
+    "Comprendre le menu",
+    "Demander l'addition"
+  ],
+  "avatar_id": "yuki-avatar-id",
+  "content": {
+    "scenario": "Vous êtes dans un restaurant parisien. Yuki est votre serveuse.",
+    "opening_line": "Bonjour ! Bienvenue au Petit Bistrot. Je suis Yuki, je vais vous servir ce soir. Voici la carte.",
+    "menu": [
+      {"item": "Soupe à l'oignon", "price": "8€", "description": "Soupe traditionnelle gratinée"},
+      {"item": "Croque-monsieur", "price": "12€", "description": "Jambon, fromage, pain de mie"},
+      {"item": "Salade niçoise", "price": "14€", "description": "Tomates, thon, olives, œuf dur"},
+      {"item": "Tarte tatin", "price": "9€", "description": "Tarte aux pommes caramélisées"}
+    ],
+    "key_phrases": [
+      "Je voudrais...",
+      "L'addition, s'il vous plaît",
+      "C'est délicieux !",
+      "Un verre d'eau, merci"
+    ],
+    "evaluation_criteria": [
+      "Utilisation correcte de la politesse",
+      "Prononciation des plats",
+      "Capacité à suivre le scénario"
+    ]
+  },
+  "is_free": true,
+  "order": 15
+}</code></pre>
+
+        <h3>7.4 — Catégories et niveaux CEFR</h3>
+        <div class="card-grid">
+          <div class="card">
+            <h4>Niveaux CEFR</h4>
+            <p><code>A1</code> — Débutant &nbsp;|&nbsp; <code>A2</code> — Élémentaire &nbsp;|&nbsp; <code>B1</code> — Intermédiaire &nbsp;|&nbsp; <code>B2</code> — Intermédiaire supérieur &nbsp;|&nbsp; <code>C1</code> — Avancé &nbsp;|&nbsp; <code>C2</code> — Maîtrise</p>
+          </div>
+          <div class="card">
+            <h4>Catégories</h4>
+            <p><code>vie-quotidienne</code> &nbsp;|&nbsp; <code>voyages</code> &nbsp;|&nbsp; <code>profession</code> &nbsp;|&nbsp; <code>culture</code> &nbsp;|&nbsp; <code>sante</code> &nbsp;|&nbsp; <code>technologie</code> &nbsp;|&nbsp; <code>examen</code></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 8 — MONITORING & LOGS                 -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="monitoring">
+        <h2>📊 Monitoring &amp; Logs</h2>
+
+        <h3>8.1 — Logs Fastify</h3>
+        <p>JetLingo utilise <strong>Fastify</strong> comme framework backend. Les logs sont configurés via :</p>
+
+        <pre><code>{
+  "logger": {
+    "level": "info",
+    "transport": {
+      "target": "pino-pretty",
+      "options": { "translateTime": "SYS:standard", "ignore": "pid,hostname" }
+    }
+  }
+}</code></pre>
+
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Niveau</th>
+                <th>Description</th>
+                <th>Quand l'utiliser</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>fatal</code></td>
+                <td>Erreur critique, le processus s'arrête</td>
+                <td>Erreurs non récupérables</td>
+              </tr>
+              <tr>
+                <td><code>error</code></td>
+                <td>Erreur requête ou interne</td>
+                <td>Erreurs API, échecs DB</td>
+              </tr>
+              <tr>
+                <td><code>warn</code></td>
+                <td>Avertissement</td>
+                <td>Dépréciations, seuils atteints</td>
+              </tr>
+              <tr>
+                <td><code>info</code></td>
+                <td>Information générale</td>
+                <td>Démarrage, requêtes normales</td>
+              </tr>
+              <tr>
+                <td><code>debug</code></td>
+                <td>Détails de débogage</td>
+                <td>Développement uniquement</td>
+              </tr>
+              <tr>
+                <td><code>trace</code></td>
+                <td>Très détaillé</td>
+                <td>Debug intensif</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>8.2 — Monitoring des appels OpenAI</h3>
+        <p>Chaque appel à l'API OpenAI est loggé avec les informations suivantes :</p>
+        <ul>
+          <li><strong>Tokens input :</strong> Nombre de tokens envoyés au modèle</li>
+          <li><strong>Tokens output :</strong> Nombre de tokens générés par le modèle</li>
+          <li><strong>Coût estimé :</strong> Calcul automatique selon le modèle utilisé</li>
+          <li><strong>Latence :</strong> Temps de réponse en millisecondes</li>
+          <li><strong>Statut :</strong> Succès ou erreur (avec code d'erreur)</li>
+        </ul>
+
+        <h3>8.3 — Métriques à surveiller</h3>
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Métrique</th>
+                <th>Description</th>
+                <th>Seuil d'alerte recommandé</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Utilisateurs actifs</strong></td>
+                <td>Nombre d'utilisateurs connectés les 7 derniers jours</td>
+                <td>&lt; 100 en production</td>
+              </tr>
+              <tr>
+                <td><strong>Sessions par jour</strong></td>
+                <td>Nombre de sessions d'apprentissage créées par jour</td>
+                <td>Baisse de &gt; 30% en une semaine</td>
+              </tr>
+              <tr>
+                <td><strong>Taux de rétention</strong></td>
+                <td>Pourcentage d'utilisateurs actifs après 7 jours</td>
+                <td>&lt; 40%</td>
+              </tr>
+              <tr>
+                <td><strong>Temps de réponse moyen</strong></td>
+                <td>Latence moyenne des endpoints API</td>
+                <td>&gt; 2000ms</td>
+              </tr>
+              <tr>
+                <td><strong>Erreurs API</strong></td>
+                <td>Taux d'erreurs 4xx/5xx</td>
+                <td>&gt; 1% des requêtes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 9 — SÉCURITÉ                         -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="securite">
+        <h2>🔒 Sécurité</h2>
+
+        <h3>9.1 — Rotation du JWT_SECRET</h3>
+        <div class="warning-box">
+          <span class="icon">⚠️</span>
+          <div>Effectuez une rotation du <code>JWT_SECRET</code> tous les 90 jours minimum. Lors de la rotation, tous les tokens existants seront invalidés et les utilisateurs devront se reconnecter.</div>
+        </div>
+        <pre><code># Générer un nouveau secret
+NEW_SECRET=$(openssl rand -base64 48)
+echo "Nouveau JWT_SECRET : $NEW_SECRET"
+
+# Mettre à jour le fichier .env
+sed -i "s/JWT_SECRET=.*/JWT_SECRET=$NEW_SECRET/" apps/backend/.env
+
+# Redémarrer le service
+pm2 restart jetlingo-api</code></pre>
+
+        <h3>9.2 — Gestion des clés API OpenAI</h3>
+        <ul>
+          <li>Ne jamais commiter les clés API dans le dépôt Git</li>
+          <li>Utiliser des variables d'environnement pour les stocker</li>
+          <li>Activer les alertes de consommation dans le dashboard OpenAI</li>
+          <li>Utiliser des clés séparées pour les environnements de développement et production</li>
+          <li>Rotation des clés tous les 6 mois</li>
+        </ul>
+
+        <h3>9.3 — Sauvegarde de la base de données</h3>
+        <p>Configurez des sauvegardes automatiques quotidiennes :</p>
+        <pre><code># Crontab — sauvegarde quotidienne à 3h00
+0 3 * * * pg_dump -U jetlingo -d jetlingo -F c -f /backups/jetlingo_$(date +\%Y\%m\%d).dump</code></pre>
+
+        <h3>9.4 — Mise à jour des dépendances</h3>
+        <pre><code># Vérifier les vulnérabilités
+npm audit
+
+# Corriger automatiquement
+npm audit fix
+
+# Mettre à jour les dépendances majeures (avec prudence)
+npm outdated
+npm update</code></pre>
+
+        <h3>9.5 — Audit de sécurité</h3>
+        <p>Effectuez un audit de sécurité trimestriel :</p>
+        <ul>
+          <li>Vérification des dépendances avec <code>npm audit</code></li>
+          <li>Revue des accès à la base de données</li>
+          <li>Test des endpoints API non authentifiés</li>
+          <li>Vérification des en-têtes HTTP de sécurité</li>
+          <li>Revue des logs pour activités suspectes</li>
+        </ul>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 10 — DÉPLOIEMENT                      -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="deploiement">
+        <h2>🌐 Déploiement</h2>
+
+        <h3>10.1 — Option 1 : Vercel + Railway + Supabase</h3>
+        <div class="card-grid">
+          <div class="card">
+            <h4>Frontend — Vercel</h4>
+            <p>Connectez le dépôt GitHub. Le framework Next.js est détecté automatiquement. Le build se lance à chaque push sur <code>main</code>.</p>
+          </div>
+          <div class="card">
+            <h4>Backend — Railway</h4>
+            <p>Créez un projet Railway, connectez le dépôt. Spécifiez la commande de démarrage : <code>node apps/backend/dist/index.js</code>.</p>
+          </div>
+          <div class="card">
+            <h4>Base de données — Supabase</h4>
+            <p>Créez un projet Supabase, puis une base PostgreSQL. Utilisez la connexion fournie pour <code>DATABASE_URL</code>.</p>
+          </div>
+        </div>
+
+        <h3>10.2 — Option 2 : Docker</h3>
+        <p>Utilisez le fichier <code>docker-compose.yml</code> fourni dans les annexes :</p>
+        <pre><code>docker-compose up -d --build</code></pre>
+        <p>Cette commande lance le backend, le frontend et la base de données PostgreSQL dans des conteneurs isolés.</p>
+
+        <h3>10.3 — Option 3 : VPS avec PM2</h3>
+        <pre><code># Installer PM2
+npm install -g pm2
+
+# Build du projet
+npm run build
+
+# Démarrer avec PM2
+pm2 start apps/backend/dist/index.js --name jetlingo-api
+
+# Sauvegarder la configuration PM2
+pm2 save
+
+# Démarrage automatique au boot
+pm2 startup</code></pre>
+
+        <h3>10.4 — Variables d'environnement de production</h3>
+        <div class="danger-box">
+          <span class="icon">🚨</span>
+          <div>En production, assurez-vous que ces variables sont correctement configurées :</div>
+        </div>
+        <pre><code>NODE_ENV=production
+DATABASE_URL=postgresql://jetlingo:your-secure-password@db-host:5432/jetlingo
+OPENAI_API_KEY=sk-proj-your-production-key
+JWT_SECRET=your-48-char-base64-secret
+JWT_EXPIRATION=86400
+CORS_ORIGIN=https://jetlingo.app,https://www.jetlingo.app
+PORT=4000
+REDIS_URL=redis://your-redis-host:6379</code></pre>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 11 — DÉPANNAGE                        -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="depannage">
+        <h2>🛠️ Dépannage</h2>
+
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Problème</th>
+                <th>Solution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>Cannot connect to database</code></td>
+                <td>Vérifier la variable <code>DATABASE_URL</code>, s'assurer que PostgreSQL est en marche et que l'utilisateur <code>jetlingo</code> existe avec les droits appropriés.</td>
+              </tr>
+              <tr>
+                <td><code>OpenAI API error: 401 Unauthorized</code></td>
+                <td>Vérifier que la variable <code>OPENAI_API_KEY</code> est correcte et que le compte OpenAI a un solde suffisant.</td>
+              </tr>
+              <tr>
+                <td><code>OpenAI API error: 429 Rate Limited</code></td>
+                <td>Attendre le délai indiqué dans les en-têtes <code>Retry-After</code>. Envisager de mettre en place un rate limiting côté application.</td>
+              </tr>
+              <tr>
+                <td><code>JWT verification failed</code></td>
+                <td>Vérifier que le <code>JWT_SECRET</code> dans le fichier <code>.env</code> correspond à celui utilisé lors de la génération du token. Si le secret a changé, les utilisateurs doivent se reconnecter.</td>
+              </tr>
+              <tr>
+                <td><code>Port already in use</code></td>
+                <td>Modifier la variable <code>PORT</code> dans le fichier <code>.env</code> ou arrêter le processus utilisant ce port : <code>lsof -i :4000</code></td>
+              </tr>
+              <tr>
+                <td><code>Seed échoue</code></td>
+                <td>Vérifier que le schéma a bien été poussé avec <code>npx drizzle-kit push</code> avant d'exécuter <code>npm run seed</code>.</td>
+              </tr>
+              <tr>
+                <td><code>Module not found</code></td>
+                <td>Supprimer <code>node_modules</code> et le fichier <code>package-lock.json</code>, puis relancer <code>npm install</code>.</td>
+              </tr>
+              <tr>
+                <td><code>ECONNREFUSED</code> sur Redis</td>
+                <td>Vérifier que Redis est démarré. Si Redis n'est pas nécessaire, retirez <code>REDIS_URL</code> du fichier <code>.env</code>.</td>
+              </tr>
+              <tr>
+                <td><code>CORS error</code> côté navigateur</td>
+                <td>Ajouter l'origine du frontend dans la variable <code>CORS_ORIGIN</code> du fichier <code>.env</code>.</td>
+              </tr>
+              <tr>
+                <td><code>TypeError: Cannot read properties of undefined</code></td>
+                <td>Vérifier que toutes les variables d'environnement requises sont définies dans le fichier <code>.env</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- SECTION 12 — ANNEXES                          -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section class="doc-section" id="annexes">
+        <h2>📎 Annexes</h2>
+
+        <h3>A.1 — Fichier docker-compose.yml complet</h3>
+        <pre><code>version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jetlingo
+      POSTGRES_PASSWORD: JetLingo2026!
+      POSTGRES_DB: jetlingo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://jetlingo:JetLingo2026!@db:5432/jetlingo
+      REDIS_URL: redis://redis:6379
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION: "86400"
+      CORS_ORIGIN: https://jetlingo.app
+    depends_on:
+      - db
+      - redis
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://backend:4000
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:</code></pre>
+
+        <h3>A.2 — Fichier ecosystem.config.js pour PM2</h3>
+        <pre><code>module.exports = {
+  apps: [
+    {
+      name: "jetlingo-api",
+      script: "./apps/backend/dist/index.js",
+      instances: "max",
+      exec_mode: "cluster",
+      env_production: {
+        NODE_ENV: "production",
+        PORT: 4000,
+      },
+      log_date_format: "YYYY-MM-DD HH:mm:ss",
+      error_file: "./logs/error.log",
+      out_file: "./logs/out.log",
+      merge_logs: true,
+      max_memory_restart: "512M",
+      autorestart: true,
+      watch: false,
+      max_restarts: 10,
+      restart_delay: 5000,
+    },
+  ],
+};</code></pre>
+
+        <h3>A.3 — Commandes utiles</h3>
+        <div class="doc-table-wrapper">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Commande</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>npm run dev</code></td>
+                <td>Démarrer l'application en mode développement</td>
+              </tr>
+              <tr>
+                <td><code>npm run build</code></td>
+                <td>Compiler le projet pour la production</td>
+              </tr>
+              <tr>
+                <td><code>npm run start</code></td>
+                <td>Démarrer l'application en mode production</td>
+              </tr>
+              <tr>
+                <td><code>npm run seed</code></td>
+                <td>Insérer les données initiales (avatars, leçons, user démo)</td>
+              </tr>
+              <tr>
+                <td><code>npx drizzle-kit push</code></td>
+                <td>Pousser le schéma vers la base de données</td>
+              </tr>
+              <tr>
+                <td><code>npx drizzle-kit studio</code></td>
+                <td>Ouvrir Drizzle Studio (GUI pour la DB)</td>
+              </tr>
+              <tr>
+                <td><code>npm run lint</code></td>
+                <td>Vérifier le style du code (ESLint)</td>
+              </tr>
+              <tr>
+                <td><code>npm run typecheck</code></td>
+                <td>Vérifier les types TypeScript</td>
+              </tr>
+              <tr>
+                <td><code>npm run test</code></td>
+                <td>Exécuter les tests unitaires</td>
+              </tr>
+              <tr>
+                <td><code>pm2 list</code></td>
+                <td>Afficher les processus PM2 actifs</td>
+              </tr>
+              <tr>
+                <td><code>pm2 logs jetlingo-api</code></td>
+                <td>Consulter les logs en temps réel</td>
+              </tr>
+              <tr>
+                <td><code>pm2 restart jetlingo-api</code></td>
+                <td>Redémarrer le service backend</td>
+              </tr>
+              <tr>
+                <td><code>docker-compose up -d</code></td>
+                <td>Lancer les conteneurs en arrière-plan</td>
+              </tr>
+              <tr>
+                <td><code>docker-compose down</code></td>
+                <td>Arrêter tous les conteneurs</td>
+              </tr>
+              <tr>
+                <td><code>docker-compose logs -f backend</code></td>
+                <td>Suivre les logs du conteneur backend</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div><!-- /.doc-container -->
+  </main>
+
+</div><!-- /.doc-wrapper -->
+
+<!-- ═══════════════ FLOATING BUTTON ═══════════════ -->
+<button class="download-btn no-print" onclick="window.print()" style="position:fixed;bottom:24px;right:24px;z-index:999;padding:14px 24px;font-size:15px;box-shadow:0 8px 32px rgba(0,0,0,0.4);border-radius:12px;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:20px;height:20px;margin-right:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+  Télécharger en PDF
+</button>
+
+</body>
+</html>

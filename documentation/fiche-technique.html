@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JetLingo — Fiche Technique</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="doc-wrapper">
+
+    <!-- ═══ Sidebar ═══ -->
+    <aside class="sidebar-nav no-print">
+      <div class="logo">
+        <h2>Jet<span>Lingo</span></h2>
+      </div>
+      <nav>
+        <div class="section-label">Navigation</div>
+        <a href="#en-tete" class="active">En-tête</a>
+        <a href="#vue-densemble">Vue d'ensemble</a>
+        <a href="#stack-technique">Stack technique</a>
+        <a href="#architecture">Architecture système</a>
+        <a href="#base-de-donnees">Base de données</a>
+        <a href="#api-endpoints">API Endpoints</a>
+        <a href="#variables-environnement">Variables d'environnement</a>
+        <a href="#performance">Performance & Métriques</a>
+        <a href="#securite">Sécurité</a>
+        <a href="#deploiement">Configuration de déploiement</a>
+      </nav>
+    </aside>
+
+    <!-- ═══ Content ═══ -->
+    <main class="content-area">
+
+      <!-- Header -->
+      <header class="doc-header" id="en-tete">
+        <span class="badge">Fiche Technique</span>
+        <h1>JetLingo — Fiche Technique</h1>
+        <p>Documentation technique complète de l'application d'apprentissage de langues par intelligence artificielle.</p>
+        <div class="meta">
+          <span>Version 1.0</span>
+          <span>21 juillet 2026</span>
+        </div>
+      </header>
+
+      <div class="doc-container">
+
+        <!-- ═══ 1. Vue d'ensemble ═══ -->
+        <section class="doc-section" id="vue-densemble">
+          <h2>📋 Vue d'ensemble</h2>
+          <p>
+            <strong>JetLingo</strong> est une application d'apprentissage de langues propulsée par l'intelligence artificielle.
+            Elle propose des conversations en temps réel avec des avatars 3D interactifs, un feedback instantané sur la
+            prononciation et la grammaire, ainsi qu'un parcours d'apprentissage personnalisé adapté au niveau et aux objectifs
+            de chaque utilisateur.
+          </p>
+          <p>
+            Grâce à une architecture multi-agents basée sur les modèles GPT-4o, Whisper et TTS d'OpenAI, JetLingo offre
+            une expérience d'apprentissage immersive, efficace et ludique — accessible depuis un navigateur web sur tous les
+            appareils.
+          </p>
+        </section>
+
+        <!-- ═══ 2. Stack technique ═══ -->
+        <section class="doc-section" id="stack-technique">
+          <h2>⚙️ Stack technique</h2>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Couche</th>
+                  <th>Technologies</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Frontend</strong></td>
+                  <td>Next.js 14, React 18, TypeScript, Tailwind CSS, Zustand, Lucide Icons</td>
+                </tr>
+                <tr>
+                  <td><strong>Backend</strong></td>
+                  <td>Node.js, Fastify 5, TypeScript, Drizzle ORM</td>
+                </tr>
+                <tr>
+                  <td><strong>Base de données</strong></td>
+                  <td>PostgreSQL 14+, Redis (cache)</td>
+                </tr>
+                <tr>
+                  <td><strong>IA</strong></td>
+                  <td>OpenAI GPT-4o (conversation), Whisper (STT), TTS (synthèse vocale)</td>
+                </tr>
+                <tr>
+                  <td><strong>Auth</strong></td>
+                  <td>JWT (bcryptjs)</td>
+                </tr>
+                <tr>
+                  <td><strong>Monorepo</strong></td>
+                  <td>npm workspaces</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══ 3. Architecture système ═══ -->
+        <section class="doc-section" id="architecture">
+          <h2>🏗️ Architecture système</h2>
+          <p>
+            JetLingo repose sur une <strong>architecture multi-agents</strong> où chaque agent IA est spécialisé dans une
+            fonction précise du parcours d'apprentissage. Ces agents collaborent via une mémoire persistante partagée,
+            garantissant une expérience cohérente et personnalisée.
+          </p>
+
+          <div class="card-grid">
+            <div class="card">
+              <h4>Lesson Agent (GPT-4o)</h4>
+              <p>Gère les conversations pédagogiques et le tutorat adaptatif. Ajuste la difficulté en temps réel selon les réponses de l'apprenant.</p>
+            </div>
+            <div class="card">
+              <h4>Student Progress Agent (GPT-4o)</h4>
+              <p>Suit les progrès de l'utilisateur, analyse les forces et faiblesses, et génère des rapports de progression détaillés.</p>
+            </div>
+            <div class="card">
+              <h4>Learning Planning Agent (GPT-4o)</h4>
+              <p>Planifie et adapte le parcours d'apprentissage personnalisé en fonction des objectifs, du niveau CEFR et des centres d'intérêt de l'utilisateur.</p>
+            </div>
+            <div class="card">
+              <h4>Pronunciation Coach Agent</h4>
+              <p>Analyse la prononciation phonème par phonème, fournit un score détaillé et des conseils de correction ciblés.</p>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <span class="icon">🧠</span>
+            <div>
+              <strong>Mémoire persistante partagée</strong> — Tous les agents accèdent à un espace de mémoire partagé qui contient l'historique d'apprentissage, les préférences utilisateur et le contexte de la session en cours.
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══ 4. Schéma de la base de données ═══ -->
+        <section class="doc-section" id="base-de-donnees">
+          <h2>🗄️ Schéma de la base de données</h2>
+
+          <h3>users</h3>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Colonne</th><th>Type</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>UUID</td><td>Identifiant unique</td></tr>
+                <tr><td><code>email</code></td><td>VARCHAR</td><td>Adresse email (unique)</td></tr>
+                <tr><td><code>name</code></td><td>VARCHAR</td><td>Nom complet</td></tr>
+                <tr><td><code>passwordHash</code></td><td>VARCHAR</td><td>Mot de passe hashé (bcrypt)</td></tr>
+                <tr><td><code>nativeLanguage</code></td><td>VARCHAR</td><td>Langue maternelle</td></tr>
+                <tr><td><code>targetLanguage</code></td><td>VARCHAR</td><td>Langue cible</td></tr>
+                <tr><td><code>cefrLevel</code></td><td>VARCHAR</td><td>Niveau CEFR (A1–C2)</td></tr>
+                <tr><td><code>accentPreference</code></td><td>VARCHAR</td><td>Accent préféré</td></tr>
+                <tr><td><code>learningGoal</code></td><td>VARCHAR</td><td>Objectif d'apprentissage</td></tr>
+                <tr><td><code>interests</code></td><td>JSONB</td><td>Centres d'intérêt</td></tr>
+                <tr><td><code>streak</code></td><td>INTEGER</td><td>Série en cours (jours)</td></tr>
+                <tr><td><code>xp</code></td><td>INTEGER</td><td>Points d'expérience</td></tr>
+                <tr><td><code>subscriptionTier</code></td><td>VARCHAR</td><td>Niveau d'abonnement</td></tr>
+                <tr><td><code>createdAt</code></td><td>TIMESTAMP</td><td>Date de création</td></tr>
+                <tr><td><code>updatedAt</code></td><td>TIMESTAMP</td><td>Dernière mise à jour</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>avatars</h3>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Colonne</th><th>Type</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>UUID</td><td>Identifiant unique</td></tr>
+                <tr><td><code>name</code></td><td>VARCHAR</td><td>Nom de l'avatar</td></tr>
+                <tr><td><code>language</code></td><td>VARCHAR</td><td>Langue parlée</td></tr>
+                <tr><td><code>accent</code></td><td>VARCHAR</td><td>Accent de l'avatar</td></tr>
+                <tr><td><code>personality</code></td><td>VARCHAR</td><td>Personnalité</td></tr>
+                <tr><td><code>backstory</code></td><td>TEXT</td><td>Histoire背景</td></tr>
+                <tr><td><code>imageUrl</code></td><td>VARCHAR</td><td>URL de l'image 3D</td></tr>
+                <tr><td><code>voiceId</code></td><td>VARCHAR</td><td>ID de la voix TTS</td></tr>
+                <tr><td><code>style</code></td><td>VARCHAR</td><td>Style visuel</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>conversations</h3>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Colonne</th><th>Type</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>UUID</td><td>Identifiant unique</td></tr>
+                <tr><td><code>userId</code></td><td>UUID</td><td>Référence vers l'utilisateur</td></tr>
+                <tr><td><code>avatarId</code></td><td>UUID</td><td>Référence vers l'avatar</td></tr>
+                <tr><td><code>lessonId</code></td><td>UUID</td><td>Référence vers la leçon (optionnel)</td></tr>
+                <tr><td><code>mode</code></td><td>VARCHAR</td><td>Mode de conversation</td></tr>
+                <tr><td><code>messages</code></td><td>JSONB</td><td>Historique des messages</td></tr>
+                <tr><td><code>duration</code></td><td>INTEGER</td><td>Durée en secondes</td></tr>
+                <tr><td><code>score</code></td><td>INTEGER</td><td>Score de la session</td></tr>
+                <tr><td><code>createdAt</code></td><td>TIMESTAMP</td><td>Date de création</td></tr>
+                <tr><td><code>updatedAt</code></td><td>TIMESTAMP</td><td>Dernière mise à jour</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>lessons</h3>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Colonne</th><th>Type</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>UUID</td><td>Identifiant unique</td></tr>
+                <tr><td><code>title</code></td><td>VARCHAR</td><td>Titre de la leçon</td></tr>
+                <tr><td><code>description</code></td><td>TEXT</td><td>Description</td></tr>
+                <tr><td><code>language</code></td><td>VARCHAR</td><td>Langue cible</td></tr>
+                <tr><td><code>category</code></td><td>VARCHAR</td><td>Catégorie</td></tr>
+                <tr><td><code>cefrLevel</code></td><td>VARCHAR</td><td>Niveau CEFR requis</td></tr>
+                <tr><td><code>content</code></td><td>JSONB</td><td>Contenu structuré de la leçon</td></tr>
+                <tr><td><code>orderIndex</code></td><td>INTEGER</td><td>Ordre dans le parcours</td></tr>
+                <tr><td><code>isPublished</code></td><td>BOOLEAN</td><td>Statut de publication</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>userProgress</h3>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Colonne</th><th>Type</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>UUID</td><td>Identifiant unique</td></tr>
+                <tr><td><code>userId</code></td><td>UUID</td><td>Référence vers l'utilisateur</td></tr>
+                <tr><td><code>lessonId</code></td><td>UUID</td><td>Référence vers la leçon</td></tr>
+                <tr><td><code>status</code></td><td>VARCHAR</td><td>Statut (en cours, terminé, etc.)</td></tr>
+                <tr><td><code>score</code></td><td>INTEGER</td><td>Score obtenu</td></tr>
+                <tr><td><code>completedAt</code></td><td>TIMESTAMP</td><td>Date de complétion</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>dictionary</h3>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Colonne</th><th>Type</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>UUID</td><td>Identifiant unique</td></tr>
+                <tr><td><code>userId</code></td><td>UUID</td><td>Référence vers l'utilisateur</td></tr>
+                <tr><td><code>word</code></td><td>VARCHAR</td><td>Mot en langue cible</td></tr>
+                <tr><td><code>translation</code></td><td>VARCHAR</td><td>Traduction</td></tr>
+                <tr><td><code>language</code></td><td>VARCHAR</td><td>Langue du mot</td></tr>
+                <tr><td><code>context</code></td><td>TEXT</td><td>Contexte d'utilisation</td></tr>
+                <tr><td><code>reviewCount</code></td><td>INTEGER</td><td>Nombre de révisions</td></tr>
+                <tr><td><code>nextReviewAt</code></td><td>TIMESTAMP</td><td>Prochaine révision (répétition espacée)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>userStats</h3>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Colonne</th><th>Type</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>id</code></td><td>UUID</td><td>Identifiant unique</td></tr>
+                <tr><td><code>userId</code></td><td>UUID</td><td>Référence vers l'utilisateur</td></tr>
+                <tr><td><code>totalMinutesLearned</code></td><td>INTEGER</td><td>Total minutes apprises</td></tr>
+                <tr><td><code>totalSessions</code></td><td>INTEGER</td><td>Total sessions</td></tr>
+                <tr><td><code>totalWordsLearned</code></td><td>INTEGER</td><td>Total mots appris</td></tr>
+                <tr><td><code>averagePronunciationScore</code></td><td>FLOAT</td><td>Moyenne score prononciation</td></tr>
+                <tr><td><code>averageGrammarScore</code></td><td>FLOAT</td><td>Moyenne score grammaire</td></tr>
+                <tr><td><code>currentStreak</code></td><td>INTEGER</td><td>Série en cours</td></tr>
+                <tr><td><code>longestStreak</code></td><td>INTEGER</td><td>Plus longue série</td></tr>
+                <tr><td><code>weeklyMinutes</code></td><td>INTEGER</td><td>Minutes cette semaine</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══ 5. API Endpoints ═══ -->
+        <section class="doc-section" id="api-endpoints">
+          <h2>🔌 API Endpoints</h2>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Méthode</th><th>Endpoint</th><th>Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>POST</code></td><td><code>/api/auth/register</code></td><td>Inscription</td></tr>
+                <tr><td><code>POST</code></td><td><code>/api/auth/login</code></td><td>Connexion</td></tr>
+                <tr><td><code>GET</code></td><td><code>/api/auth/me</code></td><td>Profil utilisateur</td></tr>
+                <tr><td><code>GET</code></td><td><code>/api/lessons</code></td><td>Liste des leçons</td></tr>
+                <tr><td><code>GET</code></td><td><code>/api/lessons/:id</code></td><td>Détail d'une leçon</td></tr>
+                <tr><td><code>POST</code></td><td><code>/api/lessons/:id/start</code></td><td>Démarrer une leçon</td></tr>
+                <tr><td><code>GET</code></td><td><code>/api/learning-path</code></td><td>Parcours personnalisé</td></tr>
+                <tr><td><code>GET</code></td><td><code>/api/conversations</code></td><td>Historique des conversations</td></tr>
+                <tr><td><code>GET</code></td><td><code>/api/conversations/:id</code></td><td>Détail d'une conversation</td></tr>
+                <tr><td><code>POST</code></td><td><code>/api/conversations/:id/message</code></td><td>Envoyer un message</td></tr>
+                <tr><td><code>POST</code></td><td><code>/api/conversations/:id/end</code></td><td>Terminer une conversation</td></tr>
+                <tr><td><code>GET</code></td><td><code>/api/avatars</code></td><td>Liste des avatars</td></tr>
+                <tr><td><code>GET</code></td><td><code>/api/dictionary</code></td><td>Dictionnaire personnel</td></tr>
+                <tr><td><code>POST</code></td><td><code>/api/dictionary</code></td><td>Sauvegarder un mot</td></tr>
+                <tr><td><code>GET</code></td><td><code>/api/progress</code></td><td>Progression</td></tr>
+                <tr><td><code>GET</code></td><td><code>/api/progress/stats</code></td><td>Statistiques détaillées</td></tr>
+                <tr><td><code>POST</code></td><td><code>/api/upload</code></td><td>Upload fichier multimodal</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══ 6. Variables d'environnement ═══ -->
+        <section class="doc-section" id="variables-environnement">
+          <h2>🔑 Variables d'environnement</h2>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Variable</th><th>Description</th><th>Exemple</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>DATABASE_URL</code></td><td>Connexion à PostgreSQL</td><td><code>postgresql://user:pass@host:5432/jetlingo</code></td></tr>
+                <tr><td><code>OPENAI_API_KEY</code></td><td>Clé API OpenAI</td><td><code>sk-proj-...</code></td></tr>
+                <tr><td><code>JWT_SECRET</code></td><td>Secret pour les tokens JWT</td><td><code>your-256-bit-secret</code></td></tr>
+                <tr><td><code>PORT</code></td><td>Port du serveur backend</td><td><code>3001</code></td></tr>
+                <tr><td><code>CORS_ORIGIN</code></td><td>Origine autorisée (frontend)</td><td><code>http://localhost:3000</code></td></tr>
+                <tr><td><code>REDIS_URL</code></td><td>Connexion à Redis</td><td><code>redis://default:pass@host:6379</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══ 7. Performance & Métriques ═══ -->
+        <section class="doc-section" id="performance">
+          <h2>📊 Performance & Métriques</h2>
+          <div class="card-grid">
+            <div class="card">
+              <h4>Latence réponse IA</h4>
+              <p><strong>&lt; 500ms</strong></p>
+            </div>
+            <div class="card">
+              <h4>Précision reconnaissance vocale</h4>
+              <p><strong>~99%</strong></p>
+            </div>
+            <div class="card">
+              <h4>Disponibilité cible</h4>
+              <p><strong>99.9%</strong></p>
+            </div>
+            <div class="card">
+              <h4>Temps de chargement initial</h4>
+              <p><strong>&lt; 2s</strong></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══ 8. Sécurité ═══ -->
+        <section class="doc-section" id="securite">
+          <h2>🔒 Sécurité</h2>
+          <ul>
+            <li><strong>Chiffrement JWT</strong> pour l'authentification des sessions utilisateur</li>
+            <li><strong>Hachage bcrypt</strong> (12 rounds) pour le stockage sécurisé des mots de passe</li>
+            <li><strong>CORS configuré</strong> pour restreindre les origines autorisées</li>
+            <li><strong>Validation Zod</strong> sur tous les inputs API pour prévenir les injections</li>
+            <li><strong>Rate limiting</strong> pour protéger contre les abus et les attaques par force brute</li>
+          </ul>
+        </section>
+
+        <!-- ═══ 9. Configuration de déploiement ═══ -->
+        <section class="doc-section" id="deploiement">
+          <h2>🚀 Configuration de déploiement</h2>
+          <div class="doc-table-wrapper">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Composant</th><th>Service recommandé</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Frontend</strong></td><td>Vercel</td></tr>
+                <tr><td><strong>Backend</strong></td><td>Railway / Render</td></tr>
+                <tr><td><strong>Base de données</strong></td><td>Supabase / Neon / Aiven</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ═══ Floating Download Button ═══ -->
+  <button class="download-btn no-print" onclick="window.print()" style="position:fixed;top:24px;right:24px;z-index:200;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Télécharger en PDF
+  </button>
+
+  <!-- ═══ Sidebar Active State Script ═══ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.sidebar-nav nav a');
+      const sections = [];
+      links.forEach(link => {
+        const id = link.getAttribute('href').replace('#', '');
+        const el = document.getElementById(id);
+        if (el) sections.push({ id, el, link });
+      });
+
+      function setActive() {
+        let current = sections[0];
+        for (const s of sections) {
+          if (s.el.getBoundingClientRect().top <= 120) current = s;
+        }
+        links.forEach(l => l.classList.remove('active'));
+        if (current) current.link.classList.add('active');
+      }
+
+      window.addEventListener('scroll', setActive);
+      setActive();
+    });
+  </script>
+
+</body>
+</html>
