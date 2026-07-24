@@ -10,42 +10,42 @@ const en = {
 
   // ── Hero ──
   hero: {
-    badge: "AI-Powered Language Learning",
-    titleLine1: "Speak like a native.",
-    titleLine2: "Learn with AI.",
+    badge: "AI-Powered Business English",
+    titleLine1: "Master Business English.",
+    titleLine2: "Advance your career with AI.",
     subtitle:
-      "Practice conversations with lifelike AI avatars. Get real-time feedback on pronunciation and grammar. Master any language naturally.",
+      "Professional English for emails, meetings, negotiations, and presentations. AI-powered practice with real-time feedback. Built for African professionals.",
     cta: "Start Learning Free",
     trust1: "No credit card required",
-    trust2: "3 free conversations daily",
-    trust3: "9 languages available",
+    trust2: "Business English lessons",
+    trust3: "Pronunciation scoring",
   },
 
   // ── Features ──
   features: {
     title: "Why JetLingo?",
     subtitle:
-      "The most immersive way to learn a language, powered by cutting-edge AI.",
+      "The most effective way to master Business English, powered by AI.",
     items: [
       {
-        title: "3D Avatars",
+        title: "Business English Lessons",
         description:
-          "Learn with lifelike AI characters who adapt to your level and interests.",
+          "Email writing, meeting skills, negotiation tactics, and presentation techniques.",
       },
       {
-        title: "Real-time Feedback",
+        title: "AI Pronunciation Scoring",
         description:
-          "Get instant corrections on grammar, pronunciation, and vocabulary.",
+          "Get instant, detailed feedback on your pronunciation with AI-powered analysis.",
       },
       {
-        title: "9 Languages",
+        title: "Real-world Scenarios",
         description:
-          "Spanish, French, German, Italian, Portuguese, Japanese, Korean, Chinese, English.",
+          "Practice business situations: emails, meetings, negotiations, and networking events.",
       },
       {
-        title: "Personalized Learning",
+        title: "Career-focused",
         description:
-          "AI adapts lessons based on your progress, goals, and interests.",
+          "Lessons designed for professionals who need English for international business.",
       },
     ],
   },
@@ -95,29 +95,30 @@ const en = {
         cta: "Start Free",
       },
       {
-        name: "Premium",
+        name: "Pro",
         price: "8",
         period: "/mo",
         features: [
           "Unlimited conversations",
-          "Advanced feedback",
+          "Business English lessons",
+          "Email & meeting templates",
           "All avatars",
           "Priority support",
-          "Offline mode",
         ],
-        cta: "Start Premium",
+        cta: "Start Pro",
       },
       {
-        name: "Family",
-        price: "15",
-        period: "/mo",
+        name: "Enterprise",
+        price: "30",
+        period: "/user/mo",
         features: [
-          "Everything in Premium",
-          "Up to 5 family members",
-          "Family progress dashboard",
-          "Parental controls",
+          "Everything in Pro",
+          "Team dashboard & analytics",
+          "Custom learning paths",
+          "HR progress tracking",
+          "Dedicated account manager",
         ],
-        cta: "Start Family",
+        cta: "Contact Sales",
       },
     ],
   },
@@ -275,6 +276,7 @@ const en = {
       Conversation: "Conversation",
       Pronunciation: "Pronunciation",
       "Exam Prep": "Exam Prep",
+      "Business English": "Business English",
     },
     tutors: {
       "profesor-carlos": "Your main guide — pedagogical, patient, uses everyday metaphors",

@@ -1056,4 +1056,322 @@ export const lessonsData: Record<string, LessonData> = {
       },
     ],
   },
+
+  // ── BUSINESS ENGLISH FOR AFRICAN FRANCOPHONE PROFESSIONALS ──
+
+  "be-1": {
+    id: "be-1",
+    title: "Professional Email Writing",
+    description: "Master the art of writing clear, professional emails in English for business communication.",
+    category: "Business English",
+    cefrLevel: "B1",
+    estimatedMinutes: 15,
+    tutorId: "james-business",
+    language: "en",
+    steps: [
+      {
+        type: "intro",
+        title: "Introduction",
+        content: "In international business, email is the primary communication tool. Writing clear, professional emails in English is essential for your career. Today we'll learn the key structures and phrases used in business emails worldwide.",
+        tutorTip: "Bonjour ! I'm James, your Business English coach. As a French speaker working in international business, you'll write dozens of emails daily. Let me show you exactly how to structure them for maximum impact.",
+      },
+      {
+        type: "vocabulary",
+        title: "Email Openings & Closings",
+        tutorTip: "The opening and closing set the tone. In English business culture, being too casual can seem unprofessional. Always match the formality to your relationship.",
+        items: [
+          { word: "Dear Mr./Ms. [Name]", translation: "Cher/Chère M./Mme [Nom]", pronunciation: "dear misterr miss name", example: "Dear Mr. Johnson, I hope this email finds you well.", exampleTranslation: "Cher M. Johnson, j'espère que ce mail vous trouve en bonne santé." },
+          { word: "I am writing to...", translation: "Je vous écris pour...", pronunciation: "eye am RIT-ing too", example: "I am writing to inquire about your services.", exampleTranslation: "Je vous écris pour me renseigner sur vos services." },
+          { word: "Please find attached...", translation: "Veuillez trouver ci-joint...", pronunciation: "pleez fine ah-TATCHD", example: "Please find attached the quarterly report.", exampleTranslation: "Veuillez trouver ci-joint le rapport trimestriel." },
+          { word: "I look forward to hearing from you.", translation: "J'attends votre réponse avec impatience.", pronunciation: "eye look frr-wurd too heer-ing from yoo", example: "Thank you for your time. I look forward to hearing from you.", exampleTranslation: "Merci pour votre temps. J'attends votre réponse avec impatience." },
+          { word: "Best regards,", translation: "Cordialement,", pronunciation: "best ree-gardz", example: "Best regards,\nJean-Pierre Dupont", exampleTranslation: "Cordialement,\nJean-Pierre Dupont" },
+        ],
+      },
+      {
+        type: "vocabulary",
+        title: "Requesting & Following Up",
+        tutorTip: "In English business culture, directness is valued but politeness is essential. Use softening phrases to sound professional, not demanding.",
+        items: [
+          { word: "Could you please...", translation: "Pourriez-vous s'il vous plaît...", pronunciation: "kood yoo pleez", example: "Could you please send me the updated proposal?", exampleTranslation: "Pourriez-vous m'envoyer la proposition mise à jour ?" },
+          { word: "I would appreciate it if...", translation: "Je vous saurais gré de...", pronunciation: "eye wud uh-PREE-shee-ate it if", example: "I would appreciate it if you could respond by Friday.", exampleTranslation: "Je vous saurais gré de bien vouloir répondre vendredi." },
+          { word: "Just a gentle reminder", translation: "Un petit rappel", pronunciation: "just uh JEN-tul ri-MYN-dur", example: "Just a gentle reminder about the deadline.", exampleTranslation: "Un petit rappel concernant la date limite." },
+          { word: "Please don't hesitate to...", translation: "N'hésitez pas à...", pronunciation: "pleez doant HEZ-i-tate too", example: "Please don't hesitate to contact me if you have questions.", exampleTranslation: "N'hésitez pas à me contacter si vous avez des questions." },
+          { word: "I apologize for the delay.", translation: "Je m'excuse pour le retard.", pronunciation: "eye uh-POL-uh-juze for thuh dih-LAY", example: "I apologize for the delay in my response.", exampleTranslation: "Je m'excuse pour le retard dans ma réponse." },
+        ],
+      },
+      {
+        type: "exercise",
+        title: "Email Scenarios",
+        tutorTip: "James's challenge! Practice writing the right email for each situation.",
+        questions: [
+          { question: "You need to request information from a supplier. What's the best opening?", options: ["Give me the info!", "Dear Sir, I am writing to inquire about...", "Hey, I need some info", "Info please"], correctIndex: 1, explanation: "Professional email openings state your purpose clearly and politely." },
+          { question: "Your client hasn't replied for a week. How do you follow up?", options: ["Why haven't you replied?", "Just a gentle reminder about our previous conversation.", "URGENT: Reply now!", "Where is my answer?"], correctIndex: 1, explanation: "Gentle reminders maintain relationships while getting results." },
+          { question: "You need to attach a document. Which phrase is most professional?", options: ["Here's the file", "Please find attached the document you requested.", "Check this out", "Document attached"], correctIndex: 1, explanation: "Please find attached is the standard professional phrase." },
+        ],
+      },
+      {
+        type: "dialogue",
+        title: "Real-World Email Exchange",
+        dialogue: [
+          { speaker: "Amina (You)", text: "Dear Mr. Thompson, I am writing to follow up on our meeting last Tuesday regarding the Abidjan project. As discussed, please find attached the revised budget proposal.", translation: "Cher M. Thompson, je vous écris pour faire suite à notre réunion de mardi dernier concernant le projet Abidjan. Comme convenu, veuillez trouver ci-joint la proposition budgétaire révisée." },
+          { speaker: "Mr. Thompson (Reply)", text: "Dear Amina, Thank you for the prompt follow-up. The budget looks reasonable. Could we schedule a call to discuss the timeline?", translation: "Chère Amina, Merci pour le suivi rapide. Le budget semble raisonnable. Pourrions-nous planifier un appel pour discuter du calendrier ?" },
+        ],
+        tutorTip: "Notice how Amina references the previous meeting and includes the attachment. This is the standard follow-up format in international business.",
+      },
+    ],
+  },
+
+  "be-2": {
+    id: "be-2",
+    title: "Meeting & Presentation Skills",
+    description: "Learn to confidently participate in and lead business meetings in English.",
+    category: "Business English",
+    cefrLevel: "B1",
+    estimatedMinutes: 18,
+    tutorId: "james-business",
+    language: "en",
+    steps: [
+      {
+        type: "intro",
+        title: "Introduction",
+        content: "Whether it's a Zoom call with colleagues in London or a boardroom presentation in Dakar, meetings are where decisions happen. Today we'll master the language of effective business meetings.",
+        tutorTip: "Bonjour! I'm James. In my 15 years in international business, I've seen talented professionals held back by not knowing the right meeting phrases. Let's change that for you!",
+      },
+      {
+        type: "vocabulary",
+        title: "Opening a Meeting",
+        tutorTip: "The first 2 minutes set the tone. A strong opening shows leadership and professionalism.",
+        items: [
+          { word: "Welcome everyone. Let's get started.", translation: "Bienvenue à tous. Commençons.", pronunciation: "wel-kum ev-ree-wun lets get STAR-ted", example: "Welcome everyone. Let's get started with today's agenda.", exampleTranslation: "Bienvenue à tous. Commençons avec l'ordre du jour d'aujourd'hui." },
+          { word: "The purpose of today's meeting is...", translation: "L'objectif de la réunion d'aujourd'hui est...", pronunciation: "thuh PUR-pus of tuh-days mee-ting iz", example: "The purpose of today's meeting is to review the Q3 results.", exampleTranslation: "L'objectif de la réunion d'aujourd'hui est de revoir les résultats du T3." },
+          { word: "Let me outline the agenda.", translation: "Permettez-moi de présenter l'ordre du jour.", pronunciation: "lets mee OUT-line thuh uh-JEN-duh", example: "Let me outline the agenda for today.", exampleTranslation: "Permettez-moi de présenter l'ordre du jour pour aujourd'hui." },
+          { word: "Any questions before we begin?", translation: "Des questions avant de commencer ?", pronunciation: "en-ee KWES-chunz be-fore wee be-gin", example: "Any questions before we begin?", exampleTranslation: "Des questions avant de commencer ?" },
+        ],
+      },
+      {
+        type: "vocabulary",
+        title: "Contributing & Disagreeing Politely",
+        tutorTip: "In English-speaking business culture, you can disagree — but you must do it diplomatically. The key is to acknowledge first, then present your view.",
+        items: [
+          { word: "I see your point, but...", translation: "Je vois votre point de vue, mais...", pronunciation: "eye see yoor poynt but", example: "I see your point, but I think we should consider the local market.", exampleTranslation: "Je vois votre point de vue, mais je pense que nous devrions considérer le marché local." },
+          { word: "That's a valid point. However...", translation: "C'est un point pertinent. Cependant...", pronunciation: "thats uh VAL-id poynt how-ev-ur", example: "That's a valid point. However, our data shows something different.", exampleTranslation: "C'est un point pertinent. Cependant, nos données montrent quelque chose de différent." },
+          { word: "I'd like to add...", translation: "J'aimerais ajouter...", pronunciation: "eye-lyke too add", example: "I'd like to add that we also need to consider the budget.", exampleTranslation: "J'aimerais ajouter que nous devons aussi considérer le budget." },
+          { word: "Could we circle back to this later?", translation: "Pourrions-nous y revenir plus tard ?", pronunciation: "kood wee SUR-kul bak too this LAYT-ur", example: "Could we circle back to this later? It needs more discussion.", exampleTranslation: "Pourrions-nous y revenir plus tard ? Cela nécessite plus de discussion." },
+          { word: "To summarize what we've discussed...", translation: "Pour résumer ce que nous avons discuté...", pronunciation: "too SUM-uh-ryze what wev duh-SCUHST", example: "To summarize, we need to increase our presence in West Africa.", exampleTranslation: "Pour résumer, nous devons accroître notre présence en Afrique de l'Ouest." },
+        ],
+      },
+      {
+        type: "exercise",
+        title: "Meeting Scenarios",
+        tutorTip: "Real situations you'll face in international meetings!",
+        questions: [
+          { question: "Your colleague proposes an idea you disagree with. What's the best response?", options: ["That's wrong!", "I see your point, but I think we should consider...", "No, I don't like that", "Absolutely not"], correctIndex: 1, explanation: "Professional disagreement acknowledges the other person's view first." },
+          { question: "You need to get back on topic after a tangent. What do you say?", options: ["Stop talking about that!", "Could we circle back to the main topic?", "This is boring", "Let's talk about something else"], correctIndex: 1, explanation: "Circle back is the standard way to redirect a meeting professionally." },
+          { question: "The meeting is running over time. How do you address this?", options: ["Hurry up!", "We're running short on time. Could we table the rest for next meeting?", "This is taking too long", "Let's skip everything"], correctIndex: 1, explanation: "Acknowledging time constraints shows awareness and respect for everyone's schedule." },
+        ],
+      },
+      {
+        type: "dialogue",
+        title: "Meeting Scenario: Project Review",
+        dialogue: [
+          { speaker: "Amina (You)", text: "Good morning everyone. Welcome to the quarterly review. The purpose of today's meeting is to discuss our progress on the Abidjan office expansion.", translation: "Bonjour à tous. Bienvenue à la revue trimestrielle. L'objectif de la réunion d'aujourd'hui est de discuter de nos progrès sur l'expansion du bureau d'Abidjan." },
+          { speaker: "David (UK)", text: "Thanks Amina. I've reviewed the numbers and I think we're ahead of schedule.", translation: "Merci Amina. J'ai examiné les chiffres et je pense que nous sommes en avance sur le planning." },
+          { speaker: "Amina (You)", text: "That's great to hear, David. I see your point about the timeline. However, I'd like to add that we still need to finalize the local permits.", translation: "C'est excellent à entendre, David. Je vois votre point sur le calendrier. Cependant, j'aimerais ajouter que nous devons encore finaliser les permis locaux." },
+        ],
+        tutorTip: "Amina opens with purpose, acknowledges David's input, and adds her concern diplomatically. This is the model of effective meeting communication.",
+      },
+    ],
+  },
+
+  "be-3": {
+    id: "be-3",
+    title: "Negotiation & Deal-Making",
+    description: "Master the language of business negotiation to close deals confidently.",
+    category: "Business English",
+    cefrLevel: "B2",
+    estimatedMinutes: 20,
+    tutorId: "james-business",
+    language: "en",
+    steps: [
+      {
+        type: "intro",
+        title: "Introduction",
+        content: "Negotiation is where value is created. Whether you're negotiating a contract, salary, or partnership terms, the right language can make or break the deal. Today we'll learn the essential phrases for successful business negotiations.",
+        tutorTip: "Bonjour! Negotiation in English follows specific patterns. I'll teach you the exact phrases used by international deal-makers. These work whether you're in Paris, Abidjan, or New York.",
+      },
+      {
+        type: "vocabulary",
+        title: "Opening Negotiations",
+        tutorTip: "A strong negotiation opening sets the tone and establishes your position without being aggressive.",
+        items: [
+          { word: "We're looking for a mutually beneficial partnership.", translation: "Nous cherchons un partenariat mutuellement bénéfique.", pronunciation: "weer LOO-king for uh MOO-chu-uh-lee bee-NEF-i-sheent PAHT-nur-ship", example: "We're looking for a mutually beneficial partnership.", exampleTranslation: "Nous cherchons un partenariat mutuellement bénéfique." },
+          { word: "What would you propose?", translation: "Que proposeriez-vous ?", pronunciation: "wud yoo pruh-POH-z", example: "Given our requirements, what would you propose?", exampleTranslation: "Compte tenu de nos exigences, que proposeriez-vous ?" },
+          { word: "Our budget allows for...", translation: "Notre budget prévoit...", pronunciation: "are BUD-jit uh-LOWS for", example: "Our budget allows for up to $50,000 for this project.", exampleTranslation: "Notre budget prévoit jusqu'à 50 000 $ pour ce projet." },
+          { word: "That's within our range.", translation: "C'est dans notre fourchette.", pronunciation: "thats with-IN are RAYNJ", example: "Your proposal of $45,000 — that's within our range.", exampleTranslation: "Votre proposition de 45 000 $ — c'est dans notre fourchette." },
+          { word: "We need to find a middle ground.", translation: "Nous devons trouver un compromis.", pronunciation: "wee need too find uh MID-ul groun", example: "We need to find a middle ground that works for both sides.", exampleTranslation: "Nous devons trouver un compromis qui convient aux deux parties." },
+        ],
+      },
+      {
+        type: "vocabulary",
+        title: "Making Concessions & Closing",
+        tutorTip: "The art of negotiation is knowing what to give up and when to close. These phrases will help you make strategic concessions.",
+        items: [
+          { word: "If you can..., then we could...", translation: "Si vous pouvez..., alors nous pourrions...", pronunciation: "if yoo can then wee kood", example: "If you can deliver by March, then we could increase the order.", exampleTranslation: "Si vous pouvez livrer en mars, alors nous pourrions augmenter la commande." },
+          { word: "That's our best offer.", translation: "C'est notre meilleure offre.", pronunciation: "thats are best OFF-ur", example: "I'm afraid that's our best offer on this project.", exampleTranslation: "Je crains que ce soit notre meilleure offre pour ce projet." },
+          { word: "We have a deal.", translation: "Nous avons un accord.", pronunciation: "wee hav uh deel", example: "Thank you for the negotiation. We have a deal.", exampleTranslation: "Merci pour la négociation. Nous avons un accord." },
+          { word: "Let's put this in writing.", translation: "Mettons cela par écrit.", pronunciation: "lets put this in RY-ting", example: "We have a deal. Let's put this in writing.", exampleTranslation: "Nous avons un accord. Mettons cela par écrit." },
+          { word: "I'll have my team send the contract.", translation: "Je ferai envoyer le contrat par mon équipe.", pronunciation: "eye-lee hav mee team send thuh KON-trakt", example: "Excellent. I'll have my team send the contract by tomorrow.", exampleTranslation: "Excellent. Je ferai envoyer le contrat par mon équipe demain." },
+        ],
+      },
+      {
+        type: "exercise",
+        title: "Negotiation Scenarios",
+        tutorTip: "Real negotiation situations you'll face in international business!",
+        questions: [
+          { question: "A supplier offers a price above your budget. How do you respond?", options: ["That's too expensive!", "I appreciate the proposal, but that's above our budget. Could we explore alternatives?", "No way!", "I won't pay that"], correctIndex: 1, explanation: "Professional negotiation acknowledges the offer while clearly stating your constraints." },
+          { question: "You want to close the deal but need a small concession. What do you say?", options: ["Take it or leave it!", "If you can include delivery, we could sign today.", "Just give me a discount", "I demand better terms"], correctIndex: 1, explanation: "Conditional language (if...then) is the foundation of strategic negotiation." },
+          { question: "The other party asks for something you can't give. How do you handle it?", options: ["Impossible!", "I understand your request, but that's beyond our current scope. However, we could...", "Not a chance", "Forget it"], correctIndex: 1, explanation: "Acknowledging + redirecting is more effective than outright rejection." },
+        ],
+      },
+      {
+        type: "dialogue",
+        title: "Negotiation: Supplier Contract",
+        dialogue: [
+          { speaker: "Amina (You)", text: "Thank you for the proposal, Mr. Chen. The quality of your products meets our requirements. However, the price point is above our budget.", translation: "Merci pour la proposition, M. Chen. La qualité de vos produits répond à nos exigences. Cependant, le prix est au-dessus de notre budget." },
+          { speaker: "Mr. Chen", text: "I understand your concern. What budget range did you have in mind?", translation: "Je comprends votre préoccupation. Quelle fourchette de budget aviez-vous en tête ?" },
+          { speaker: "Amina (You)", text: "Our budget allows for up to $30 per unit for an order of 10,000. If you can meet that, we could sign the contract this week.", translation: "Notre budget prévoit jusqu'à 30 $ par unité pour une commande de 10 000. Si vous pouvez nous offrir cela, nous pourrions signer le contrat cette semaine." },
+          { speaker: "Mr. Chen", text: "That's a significant order. If you can commit to 15,000 units, I can offer $30 per unit.", translation: "C'est une commande importante. Si vous pouvez vous engager sur 15 000 unités, je peux offrir 30 $ par unité." },
+          { speaker: "Amina (You)", text: "Let's find a middle ground. How about 12,000 units at $30, with delivery by March 15th?", translation: "Trouvons un compromis. Qu'en diriez-vous de 12 000 unités à 30 $, avec livraison d'ici le 15 mars ?" },
+          { speaker: "Mr. Chen", text: "You have a deal.", translation: "Vous avez un accord." },
+          { speaker: "Amina (You)", text: "Excellent. Let's put this in writing.", translation: "Excellent. Mettons cela par écrit." },
+        ],
+        tutorTip: "Notice Amina's negotiation technique: acknowledge the offer, state constraints, propose alternatives, find middle ground, and close firmly. This is the exact pattern used by top negotiators.",
+      },
+    ],
+  },
+
+  "be-4": {
+    id: "be-4",
+    title: "Business Travel & Networking",
+    description: "Navigate airports, hotels, and business dinners with confidence in English.",
+    category: "Business English",
+    cefrLevel: "B1",
+    estimatedMinutes: 15,
+    tutorId: "james-business",
+    language: "en",
+    steps: [
+      {
+        type: "intro",
+        title: "Introduction",
+        content: "International business often means traveling. Whether you're at an airport in Dubai, a hotel in London, or a business dinner in New York, the right English phrases will help you navigate every situation with confidence.",
+        tutorTip: "Bonjour! Business travel is where opportunities happen. I'll teach you the exact phrases you need at airports, hotels, and networking events.",
+      },
+      {
+        type: "vocabulary",
+        title: "Airport & Hotel",
+        tutorTip: "These are the most common situations during business travel. Master these phrases and you'll travel stress-free.",
+        items: [
+          { word: "I have a reservation under...", translation: "J'ai une réservation au nom de...", pronunciation: "eye hav uh reh-zur-VAY-shun un-der", example: "I have a reservation under Dupont for tonight.", exampleTranslation: "J'ai une réservation au nom de Dupont pour ce soir." },
+          { word: "Could I get a wake-up call at...?", translation: "Pourrais-je avoir un réveil à...?", pronunciation: "kood eye get uh WAYK-up kol at", example: "Could I get a wake-up call at 6 AM?", exampleTranslation: "Pourrais-je avoir un réveil à 6 heures ?" },
+          { word: "I'd like to check out, please.", translation: "Je voudrais régler ma note, s'il vous plaît.", pronunciation: "eye-lyke too check owt pleez", example: "Good morning. I'd like to check out, please.", exampleTranslation: "Bonjour. Je voudrais régler ma note, s'il vous plaît." },
+          { word: "Is there a business center?", translation: "Y a-t-il un centre d'affaires ?", pronunciation: "iz thair uh BIZ-niss SEN-tur", example: "Is there a business center where I can print some documents?", exampleTranslation: "Y a-t-il un centre d'affaires où je peux imprimer des documents ?" },
+        ],
+      },
+      {
+        type: "vocabulary",
+        title: "Networking Events",
+        tutorTip: "Business dinners and networking events are where relationships are built. The right opening lines make all the difference.",
+        items: [
+          { word: "Hi, I'm [Name] from [Company].", translation: "Bonjour, je suis [Nom] de [Entreprise].", pronunciation: "hi eye-am name from kom-puh-nee", example: "Hi, I'm Amina from West Africa Industries.", exampleTranslation: "Bonjour, je suis Amina de West Africa Industries." },
+          { word: "What do you do?", translation: "Que faites-vous dans la vie ?", pronunciation: "wut doo yoo doo", example: "What do you do at the company?", exampleTranslation: "Que faites-vous dans l'entreprise ?" },
+          { word: "I'm in charge of...", translation: "Je suis responsable de...", pronunciation: "eye-m in charj of", example: "I'm in charge of business development for West Africa.", exampleTranslation: "Je suis responsable du développement commercial pour l'Afrique de l'Ouest." },
+          { word: "Let's exchange cards.", translation: "Échangeons nos cartes.", pronunciation: "lets ex-SHAYNJ kardz", example: "It was great meeting you. Let's exchange cards.", exampleTranslation: "C'était un plaisir de vous rencontrer. Échangeons nos cartes." },
+          { word: "Would you like to continue this over coffee?", translation: "Aimeriez-vous poursuivre cela autour d'un café ?", pronunciation: "wud yoo lyke too kuhn-TIN-yoo this oh-ver KOF-ee", example: "This is interesting. Would you like to continue this over coffee?", exampleTranslation: "C'est intéressant. Aimeriez-vous poursuivre cela autour d'un café ?" },
+        ],
+      },
+      {
+        type: "exercise",
+        title: "Travel & Networking Scenarios",
+        tutorTip: "Real situations you'll face on business trips!",
+        questions: [
+          { question: "You arrive at a hotel but your reservation isn't found. What do you say?", options: ["This is unacceptable!", "I have a reservation under Dupont. Could you check again?", "Where is my room?", "I booked already!"], correctIndex: 1, explanation: "Staying calm and providing clear information resolves issues faster." },
+          { question: "You meet someone at a networking event. What's the best way to start a conversation?", options: ["Nice to meet you. What do you do?", "Hey, what's up?", "Are you important?", "Tell me about yourself"], correctIndex: 0, explanation: "Professional networking starts with a clear introduction and genuine curiosity." },
+          { question: "You want to follow up after meeting a potential client. What do you say?", options: ["Remember me?", "It was great meeting you. Would you like to schedule a call to discuss further?", "Call me back", "We should talk more"], correctIndex: 1, explanation: "A clear, specific follow-up request is more effective than a vague suggestion." },
+        ],
+      },
+      {
+        type: "dialogue",
+        title: "Networking at a Business Conference",
+        dialogue: [
+          { speaker: "Amina (You)", text: "Hi, I'm Amina from West Africa Industries. I noticed your presentation on supply chain solutions. Very impressive.", translation: "Bonjour, je suis Amina de West Africa Industries. J'ai remarqué votre présentation sur les solutions de chaîne d'approvisionnement. Très impressionnant." },
+          { speaker: "Sarah (UK)", text: "Thank you! I'm Sarah from Global Logistics. What do you do at West Africa Industries?", translation: "Merci ! Je suis Sarah de Global Logistics. Que faites-vous chez West Africa Industries ?" },
+          { speaker: "Amina (You)", text: "I'm in charge of business development for West Africa. We're expanding our distribution network and your solutions could be a great fit.", translation: "Je suis responsable du développement commercial pour l'Afrique de l'Ouest. Nous développons notre réseau de distribution et vos solutions pourraient être un excellent choix." },
+          { speaker: "Sarah (UK)", text: "That sounds very interesting. Would you like to continue this over coffee?", translation: "Cela semble très intéressant. Aimeriez-vous poursuivre cela autour d'un café ?" },
+        ],
+        tutorTip: "Amina leads with a compliment (shows she paid attention), introduces herself clearly, and states the potential opportunity. This is a textbook networking opening.",
+      },
+    ],
+  },
+
+  "be-5": {
+    id: "be-5",
+    title: "Presentations & Pitches",
+    description: "Deliver compelling business presentations and pitch your ideas with impact.",
+    category: "Business English",
+    cefrLevel: "B2",
+    estimatedMinutes: 20,
+    tutorId: "james-business",
+    language: "en",
+    steps: [
+      {
+        type: "intro",
+        title: "Introduction",
+        content: "Presentations and pitches are where you sell your ideas, products, and vision. Whether you're presenting quarterly results to your board or pitching a new partnership, the right delivery can transform your career.",
+        tutorTip: "Bonjour! A great presentation isn't about perfect English — it's about structure, confidence, and clear communication. I'll teach you the exact framework used by top executives.",
+      },
+      {
+        type: "vocabulary",
+        title: "Opening & Structure",
+        tutorTip: "The first 30 seconds determine whether your audience listens or zones out. Start strong.",
+        items: [
+          { word: "Good morning/afternoon. Thank you for being here.", translation: "Bonjour/Bonsoir. Merci d'être présents.", pronunciation: "gud MOR-ning af-ter-noon thangk yoo for being heer", example: "Good morning. Thank you for being here today.", exampleTranslation: "Bonjour. Merci d'être présents aujourd'hui." },
+          { word: "Today I'd like to present...", translation: "Aujourd'hui, j'aimerais vous présenter...", pronunciation: "tuh-DAY eye-lyke too prez-ENT", example: "Today I'd like to present our expansion plan for West Africa.", exampleTranslation: "Aujourd'hui, j'aimerais vous présenter notre plan d'expansion pour l'Afrique de l'Ouest." },
+          { word: "Let me walk you through...", translation: "Permettez-moi de vous guider à travers...", pronunciation: "lets mee wok yoo throo", example: "Let me walk you through the key highlights.", exampleTranslation: "Permettez-moi de vous guider à travers les points clés." },
+          { word: "As you can see on this slide...", translation: "Comme vous pouvez le voir sur cette diapositive...", pronunciation: "az yoo kan see on thys syd", example: "As you can see on this slide, revenue grew 25%.", exampleTranslation: "Comme vous pouvez le voir sur cette diapositive, le revenu a augmenté de 25 %." },
+        ],
+      },
+      {
+        type: "vocabulary",
+        title: "Engaging & Closing Strong",
+        tutorTip: "The best presenters keep the audience engaged throughout and end with a clear call to action.",
+        items: [
+          { word: "Let me share a quick example.", translation: "Permettez-moi de partager un exemple rapide.", pronunciation: "lets mee share uh KWIK ig-ZAM-pul", example: "Let me share a quick example from our Abidjan office.", exampleTranslation: "Permettez-moi de partager un exemple rapide de notre bureau d'Abidjan." },
+          { word: "The key takeaway is...", translation: "Le point essentiel à retenir est...", pronunciation: "thuh kee TAYK-way iz", example: "The key takeaway is that our model is scalable.", exampleTranslation: "Le point essentiel à retenir est que notre modèle est évolutif." },
+          { word: "In conclusion...", translation: "En conclusion...", pronunciation: "in kun-kloo-ZHUN", example: "In conclusion, this partnership will benefit both organizations.", exampleTranslation: "En conclusion, ce partenariat bénéficiera aux deux organisations." },
+          { word: "Thank you. I'm happy to take any questions.", translation: "Merci. Je suis disponible pour répondre à vos questions.", pronunciation: "thangk yoo eye-m HAP-ee too take en-ee KWES-chunz", example: "Thank you for your attention. I'm happy to take any questions.", exampleTranslation: "Merci pour votre attention. Je suis disponible pour répondre à vos questions." },
+        ],
+      },
+      {
+        type: "exercise",
+        title: "Presentation Scenarios",
+        tutorTip: "Real presentation situations for African francophone professionals!",
+        questions: [
+          { question: "You're presenting to the board. How do you start?", options: ["So, um, let me start...", "Good morning. Thank you for being here. Today I'd like to present...", "Hey everyone!", "Let me tell you a story"], correctIndex: 1, explanation: "A strong opening with gratitude and clear purpose establishes credibility." },
+          { question: "A slide has complex data. How do you help the audience understand?", options: ["Just look at this!", "As you can see on this slide, the key point is that revenue grew 25%.", "It's complicated", "Skip this one"], correctIndex: 1, explanation: "Guiding the audience through data with a clear takeaway is essential." },
+          { question: "You're ending your presentation. What's the strongest closing?", options: ["That's it, I guess", "In conclusion, this opportunity will transform our market position. Thank you. I'm happy to take any questions.", "Any questions?", "Done!"], correctIndex: 1, explanation: "A strong closing summarizes the key message and invites engagement." },
+        ],
+      },
+      {
+        type: "dialogue",
+        title: "Board Presentation: West Africa Expansion",
+        dialogue: [
+          { speaker: "Amina (You)", text: "Good morning, everyone. Thank you for being here. Today I'd like to present our expansion plan for West Africa — a $2 billion opportunity we cannot afford to miss.", translation: "Bonjour à tous. Merci d'être présents. Aujourd'hui, j'aimerais vous présenter notre plan d'expansion pour l'Afrique de l'Ouest — un marché de 2 milliards de dollars que nous ne pouvons pas nous permettre de rater." },
+          { speaker: "Amina (You)", text: "Let me walk you through three key areas. First, market opportunity. As you can see on this slide, West Africa has 400 million consumers with a growing middle class.", translation: "Permettez-moi de vous guider à travers trois domaines clés. Premièrement, l'opportunité de marché. Comme vous pouvez le voir sur cette diapositive, l'Afrique de l'Ouest compte 400 millions de consommateurs avec une classe moyenne en pleine croissance." },
+          { speaker: "Amina (You)", text: "Let me share a quick example. Our pilot in Côte d'Ivoire achieved 150% ROI within 12 months. The key takeaway is that our model works, and it's ready to scale.", translation: "Permettez-moi de partager un exemple rapide. Notre projet pilote en Côte d'Ivoire a atteint un retour sur investissement de 150 % en 12 mois. Le point essentiel est que notre modèle fonctionne et qu'il est prêt à être déployé à grande échelle." },
+          { speaker: "Amina (You)", text: "In conclusion, I'm proposing a $50 million investment over 3 years. This will position us as the market leader. Thank you for your attention. I'm happy to take any questions.", translation: "En conclusion, je propose un investissement de 50 millions de dollars sur 3 ans. Cela nous positionnera comme leader du marché. Merci pour votre attention. Je suis disponible pour répondre à vos questions." },
+        ],
+        tutorTip: "This presentation follows the exact structure: Opening → Context → Data → Example → Key Takeaway → Call to Action → Questions. This framework works for any business presentation.",
+      },
+    ],
+  },
 };

@@ -147,6 +147,20 @@ export const tutors: Tutor[] = [
     color: "rose",
     language: "en",
   },
+
+  // ── BUSINESS ENGLISH TUTOR ──
+  {
+    id: "james-business",
+    name: "James",
+    role: "Your Business English coach",
+    personality: "Professional, experienced, specialized in corporate communication",
+    avatar: "💼",
+    specialty: "Business English, negotiations, presentations, email writing",
+    greeting: "Bonjour! I'm James, your Business English coach. With 15 years in international business, I'll help you master the English you need to succeed globally.",
+    style: "academic",
+    color: "blue",
+    language: "en",
+  },
 ];
 
 export function getTutorById(id: string): Tutor | undefined {

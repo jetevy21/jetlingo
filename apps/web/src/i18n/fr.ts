@@ -10,42 +10,42 @@ const fr = {
 
   // ── Hero ──
   hero: {
-    badge: "Apprentissage de langues par IA",
-    titleLine1: "Parlez comme un natif.",
-    titleLine2: "Apprenez avec l'IA.",
+    badge: "Anglais des affaires par IA",
+    titleLine1: "Maîtrisez l'anglais des affaires.",
+    titleLine2: "Faites évoluer votre carrière avec l'IA.",
     subtitle:
-      "Pratiquez des conversations avec des avatars IA réalistes. Obtenez un feedback en temps réel sur la prononciation et la grammaire. Maîtrisez n'importe quelle langue naturellement.",
+      "Anglais professionnel pour emails, réunions, négociations et présentations. Pratique IA avec feedback en temps réel. Conçu pour les professionnels africains.",
     cta: "Commencer gratuitement",
     trust1: "Aucune carte bancaire requise",
-    trust2: "3 conversations gratuites par jour",
-    trust3: "9 langues disponibles",
+    trust2: "Leçons d'anglais des affaires",
+    trust3: "Score de prononciation",
   },
 
   // ── Features ──
   features: {
     title: "Pourquoi JetLingo ?",
     subtitle:
-      "La façon la plus immersive d'apprendre une langue, propulsée par une IA de pointe.",
+      "La méthode la plus efficace pour maîtriser l'anglais des affaires, propulsée par l'IA.",
     items: [
       {
-        title: "Avatars 3D",
+        title: "Leçons d'anglais des affaires",
         description:
-          "Apprenez avec des personnages IA réalistes qui s'adaptent à votre niveau et vos centres d'intérêt.",
+          "Rédaction d'emails, compétences en réunions, techniques de négociation et présentations professionnelles.",
       },
       {
-        title: "Feedback en temps réel",
+        title: "Score de prononciation IA",
         description:
-          "Obtenez des corrections instantanées sur la grammaire, la prononciation et le vocabulaire.",
+          "Obtenez un feedback détaillé et instantané sur votre prononciation grâce à l'analyse par IA.",
       },
       {
-        title: "9 langues",
+        title: "Scénarios réels",
         description:
-          "Espagnol, français, allemand, italien, portugais, japonais, coréen, chinois, anglais.",
+          "Pratiquez des situations professionnelles : emails, réunions, négociations et événements de networking.",
       },
       {
-        title: "Apprentissage personnalisé",
+        title: "Orienté carrière",
         description:
-          "L'IA adapte les leçons en fonction de vos progrès, objectifs et centres d'intérêt.",
+          "Leçons conçues pour les professionnels qui ont besoin de l'anglais pour les affaires internationales.",
       },
     ],
   },
@@ -96,29 +96,30 @@ const fr = {
         cta: "Commencer gratuitement",
       },
       {
-        name: "Premium",
+        name: "Pro",
         price: "8",
         period: "/mois",
         features: [
           "Conversations illimitées",
-          "Feedback avancé",
+          "Leçons d'anglais des affaires",
+          "Modèles d'emails et réunions",
           "Tous les avatars",
           "Support prioritaire",
-          "Mode hors-ligne",
         ],
-        cta: "Passer au Premium",
+        cta: "Passer au Pro",
       },
       {
-        name: "Famille",
-        price: "15",
-        period: "/mois",
+        name: "Entreprise",
+        price: "30",
+        period: "/utilisateur/mois",
         features: [
-          "Tout le Premium",
-          "Jusqu'à 5 membres",
-          "Dashboard famille",
-          "Contrôle parental",
+          "Tout le Pro",
+          "Dashboard équipe & analytics",
+          "Parcours d'apprentissage personnalisés",
+          "Suivi des progrès RH",
+          "Account manager dédié",
         ],
-        cta: "Passer Famille",
+        cta: "Contacter les ventes",
       },
     ],
   },
@@ -276,6 +277,7 @@ const fr = {
       Conversation: "Conversation",
       Pronunciation: "Prononciation",
       "Exam Prep": "Préparation examen",
+      "Business English": "Anglais des affaires",
     },
     tutors: {
       "profesor-carlos": "Ton guide principal — pédagogue, patient, utilise des métaphores du quotidien",
