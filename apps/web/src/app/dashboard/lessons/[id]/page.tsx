@@ -10,12 +10,28 @@ import { recordLessonCompletion } from "@/hooks/useProgress";
 import Button from "@/components/ui/Button";
 import PronunciationPractice from "@/components/practice/PronunciationPractice";
 import { ArrowLeft, ArrowRight, CheckCircle2, XCircle, Volume2, Sparkles } from "lucide-react";
-import dynamic from "next/dynamic";
 
-const RobotAvatar = dynamic(() => import("@/components/avatar3d/RobotAvatar"), {
-  ssr: false,
-  loading: () => <div className="w-[140px] h-[180px] bg-slate-800/30 rounded-2xl animate-pulse" />,
-});
+function TutorAvatar({ tutor, size = "sm", emotion = "idle" }: { tutor: Tutor; size?: "sm" | "md"; emotion?: string }) {
+  const sizeClasses = size === "sm" ? "w-16 h-16 text-3xl" : "w-24 h-24 text-4xl";
+  const bgMap: Record<string, string> = {
+    teal: "from-teal-500 to-teal-600",
+    rose: "from-rose-500 to-rose-600",
+    amber: "from-amber-500 to-amber-600",
+    purple: "from-purple-500 to-purple-600",
+    emerald: "from-emerald-500 to-emerald-600",
+    blue: "from-blue-500 to-blue-600",
+    indigo: "from-indigo-500 to-indigo-600",
+    cyan: "from-cyan-500 to-cyan-600",
+    orange: "from-orange-500 to-orange-600",
+    pink: "from-pink-500 to-pink-600",
+    lime: "from-lime-500 to-lime-600",
+  };
+  return (
+    <div className={`${sizeClasses} rounded-full bg-gradient-to-br ${bgMap[tutor.color] || "from-teal-500 to-teal-600"} flex items-center justify-center shadow-lg`}>
+      {tutor.emoji}
+    </div>
+  );
+}
 
 export default function LessonPage({ params }: { params: { id: string } }) {
   const router = useRouter();
@@ -176,12 +192,7 @@ export default function LessonPage({ params }: { params: { id: string } }) {
           </h1>
           {tutor && (
             <div className="flex flex-col items-center gap-3 p-4 bg-slate-800/50 rounded-2xl border border-slate-700/50">
-              <RobotAvatar
-                tutorId={tutor.id}
-                isSpeaking={false}
-                emotion="happy"
-                size="sm"
-              />
+              <TutorAvatar tutor={tutor} emotion="happy" />
               <div className="text-center">
                 <p className="text-white font-medium">{tutor.name}</p>
                 <p className="text-slate-400 text-sm">
@@ -255,11 +266,9 @@ export default function LessonPage({ params }: { params: { id: string } }) {
         }`}>
           <div className="flex items-start gap-4">
             <div className="flex-shrink-0">
-              <RobotAvatar
-                tutorId={tutor.id}
-                isSpeaking={false}
+              <TutorAvatar
+                tutor={tutor}
                 emotion={completed ? "happy" : currentStep === 0 ? "idle" : "explaining"}
-                size="sm"
               />
             </div>
             <div className="flex-1 min-w-0">
